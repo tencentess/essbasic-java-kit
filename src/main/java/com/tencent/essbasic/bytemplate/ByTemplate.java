@@ -2,11 +2,8 @@ package com.tencent.essbasic.bytemplate;
 
 import com.tencent.essbasic.api.DescribeTemplates;
 import com.tencent.essbasic.common.CreateFlowUtils;
-import com.tencentcloudapi.essbasic.v20210526.models.DescribeTemplatesResponse;
-import com.tencentcloudapi.essbasic.v20210526.models.FlowApproverInfo;
+import com.tencentcloudapi.essbasic.v20210526.models.*;
 import com.tencent.essbasic.config.Config;
-import com.tencentcloudapi.essbasic.v20210526.models.Recipient;
-import com.tencentcloudapi.essbasic.v20210526.models.TemplateInfo;
 
 import javax.swing.text.html.Option;
 import java.util.ArrayList;
@@ -34,10 +31,10 @@ public class ByTemplate {
         for (Recipient recipient : recipients) {
             switch (recipient.getRecipientType()) {
                 case "ENTERPRISE":
-                    approvers.add(BuildPersonApprover(personName,personMobile, recipient.getRecipientId()));
+                    approvers.add(BuildOrganizationApprover(organizationName, organizationOpenId, openId, recipient.getRecipientId()));
                     break;
                 case "INDIVIDUAL":
-                    approvers.add(BuildOrganizationApprover(organizationName, organizationOpenId, openId, recipient.getRecipientId()));
+                    approvers.add(BuildPersonApprover(personName,personMobile, recipient.getRecipientId()));
                     break;
 
             }
@@ -114,4 +111,11 @@ public class ByTemplate {
                 map(DescribeTemplatesResponse::getTemplates).map(rec -> rec[0].getRecipients()).orElse(null);
     }
 
+    // 构建内容控件填充结构
+    public static FormField BuildFormField(String componentName, String componentValue){
+        FormField formField = new FormField();
+        formField.setComponentName(componentName);
+        formField.setComponentValue(componentValue);
+        return formField;
+    }
 }

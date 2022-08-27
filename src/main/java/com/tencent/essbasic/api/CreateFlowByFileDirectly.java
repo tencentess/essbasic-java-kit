@@ -18,10 +18,9 @@ public class CreateFlowByFileDirectly {
      * @param flowName 签署流程名称
      * @return Map<String, String>
      */
-    public static Map<String, String> createFlowByFileDirectly(String fileBase64,
-                                                               FlowApproverInfo[] flowApproverInfos, String flowName){
-        Map<String, String> flowIdAndUrl = new HashMap<>();
-
+    public static Map<String, String> createFlowByFileDirectly(String flowName, String fileBase64,
+                                                               FlowApproverInfo[] flowApproverInfos){
+        Map<String, String> resp = new HashMap<>();
         // 设置agent参数
         Agent agent = setAgent();
 
@@ -52,10 +51,10 @@ public class CreateFlowByFileDirectly {
         assert createSignUrlsRes != null;
         String url = createSignUrlsRes.getSignUrlInfos()[0].getSignUrl();
 
-        flowIdAndUrl.put("flowId", flowId);
-        flowIdAndUrl.put("url", url);
+        resp.put("flowId", flowId);
+        resp.put("url", url);
 
-        return flowIdAndUrl;
+        return resp;
     }
 
 }

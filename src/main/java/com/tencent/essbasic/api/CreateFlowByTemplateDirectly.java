@@ -7,6 +7,7 @@ import com.tencent.essbasic.config.Config;
 
 import java.util.*;
 
+import static com.tencent.essbasic.bytemplate.ByTemplate.BuildFormField;
 import static com.tencent.essbasic.common.CreateFlowUtils.setAgent;
 
 /**
@@ -17,28 +18,22 @@ public class CreateFlowByTemplateDirectly {
      * 通过文件base64直接发起签署流程
      *
      * @param flowName    签署流程名称
-     * @param proxyOrganizationName 渠道侧合作企业名称
      * @param templateId 模板唯一标识
      * @return Map<String, String[]>
      */
-    public static Map<String, String[]> createFlowByTemplateDirectly(String flowName, String proxyOrganizationName,
+    public static Map<String, String[]> createFlowByTemplateDirectly(String flowName,
                                                                      String templateId,
                                                                      FlowApproverInfo[] flowApproverInfos){
-
-        Agent agent = setAgent();
-        // 创建控制台链接
-        CreateConsoleLoginUrlResponse loginUrlResponse =
-                CreateConsoleLoginUrl.createConsoleLoginUrl(agent, proxyOrganizationName);
         Map<String, String[]> resp = new HashMap<>();
-        assert loginUrlResponse != null;
-        resp.put("ConsoleUrl", new String[]{loginUrlResponse.getConsoleUrl()});
-
-
+        // 设置agent参数
+        Agent agent = setAgent();
         // 创建签署流程
         // 签署数量
         int count  = Config.COUNT;
         FlowInfo[] FlowInfos = new FlowInfo[count];
         for (int i = 0; i < count; i++){
+            // 构建内容控件填充结构(根据自己需求使用)
+            //FlowInfos[i].setFormFields(new FormField[]{BuildFormField("姓名", "张三")});
             FlowInfos[i] = CreateFlowUtils.fillFlowInfo(templateId, flowName, flowApproverInfos);
         }
 
@@ -54,7 +49,7 @@ public class CreateFlowByTemplateDirectly {
         if(createSignUrlsRes.getSignUrlInfos().length != 0){
             String[] Urls = new String[count];
             for(int i = 0; i < count; i++){
-                Urls[i] = createSignUrlsRes.getSignUrlInfos()[0].getSignUrl();
+                Urls[i] = createSignUrlsRes.getSignUrlInfos()[i].getSignUrl();
             }
             resp.put("Urls", Urls);
         }

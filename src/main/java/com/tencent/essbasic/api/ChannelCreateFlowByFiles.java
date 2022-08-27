@@ -105,7 +105,7 @@ public class ChannelCreateFlowByFiles {
             component.setComponentPage(1L);
             // 印章 ID，传参 DEFAULT_COMPANY_SEAL 表示使用默认印章。
             // 控件填入内容，印章控件里面，如果是手写签名内容为PNG图片格式的base64编码。
-            component.setComponentValue("componentValue");
+            component.setComponentValue("");
             Component[] components = new Component[]{component};
             flowApproverInfo.setSignComponents(components);
             FlowApproverInfo[] flowApproverInfos = new FlowApproverInfo[]{flowApproverInfo};

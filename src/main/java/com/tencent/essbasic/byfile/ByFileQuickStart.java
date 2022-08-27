@@ -1,11 +1,14 @@
 package com.tencent.essbasic.byfile;
 
+import com.tencent.essbasic.api.CreateConsoleLoginUrl;
 import com.tencent.essbasic.api.CreateFlowByFileDirectly;
 import com.tencent.essbasic.api.DescribeFileUrls;
+import com.tencentcloudapi.essbasic.v20210526.models.CreateConsoleLoginUrlResponse;
 import com.tencentcloudapi.essbasic.v20210526.models.FlowApproverInfo;
 import java.util.Map;
 
 import static com.tencent.essbasic.common.CreateFlowUtils.convertImageFileToBase64;
+import static com.tencent.essbasic.common.CreateFlowUtils.setAgent;
 
 /**
  * 使用文件发起合同QuickStart
@@ -22,7 +25,12 @@ public class ByFileQuickStart {
             String filePath = "blank.pdf";
             // 定义合同名
             String flowName = "我的第一个合同";
+            // 渠道侧合作企业名称
+            String proxyOrganizationName = "我的企业";
 
+            // 创建控制台链接
+            CreateConsoleLoginUrlResponse loginUrlResponse =
+                    CreateConsoleLoginUrl.createConsoleLoginUrl(setAgent(), proxyOrganizationName);
             // 此处为快速发起；如果是正式接入，构造签署人，请参考函数内说明，构造需要的场景参数
             FlowApproverInfo[] flowApproverInfos = ByFile.BuildApprovers();
 
@@ -32,9 +40,12 @@ public class ByFileQuickStart {
 
             // 发起合同
             Map<String, String> resp = CreateFlowByFileDirectly.createFlowByFileDirectly
-                    (fileBase64, flowApproverInfos, flowName);
+                    (flowName, fileBase64, flowApproverInfos);
 
             // 返回合同Id
+            System.out.println("您的控制台入口为：");
+            System.out.println(loginUrlResponse.getConsoleUrl());
+            System.out.println("\r\n\r\n");
             System.out.println("您创建的合同id为：");
             System.out.println(resp.get("flowId"));
             System.out.println("\r\n\r\n");
