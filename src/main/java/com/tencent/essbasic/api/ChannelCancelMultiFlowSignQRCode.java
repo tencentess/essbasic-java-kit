@@ -2,7 +2,9 @@ package com.tencent.essbasic.api;
 
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
-import com.tencentcloudapi.essbasic.v20210526.models.*;
+import com.tencentcloudapi.essbasic.v20210526.models.Agent;
+import com.tencentcloudapi.essbasic.v20210526.models.ChannelCancelMultiFlowSignQRCodeRequest;
+import com.tencentcloudapi.essbasic.v20210526.models.ChannelCancelMultiFlowSignQRCodeResponse;
 
 import static com.tencent.essbasic.common.CreateFlowUtils.initClient;
 import static com.tencent.essbasic.common.CreateFlowUtils.setAgent;
@@ -32,8 +34,7 @@ public class ChannelCancelMultiFlowSignQRCode {
             req.setQrCodeId(qrCodeId);
 
             // 返回的resp是一个ChannelCancelMultiFlowSignQRCodeResponse的实例，与请求对象对应
-            ChannelCancelMultiFlowSignQRCodeResponse resp = client.ChannelCancelMultiFlowSignQRCode(req);
-            return resp;
+            return client.ChannelCancelMultiFlowSignQRCode(req);
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }

@@ -1,9 +1,9 @@
 package com.tencent.essbasic.api;
 
+import com.tencent.essbasic.config.Config;
 import com.tencentcloudapi.essbasic.v20210526.models.Agent;
 import com.tencentcloudapi.essbasic.v20210526.models.DescribeResourceUrlsByFlowsResponse;
 import com.tencentcloudapi.essbasic.v20210526.models.UserInfo;
-import com.tencent.essbasic.config.Config;
 
 /**
  * 查询文件下载URL
@@ -34,8 +34,7 @@ public class DescribeFileUrls {
                 describeResourceUrlsByFlows(agent, flowIds);
 
         assert urlResp != null;
-        String url = urlResp.getFlowResourceUrlInfos()[0].getResourceUrlInfos()[0].getUrl();
-        return url;
+        return urlResp.getFlowResourceUrlInfos()[0].getResourceUrlInfos()[0].getUrl();
     }
 
     /**

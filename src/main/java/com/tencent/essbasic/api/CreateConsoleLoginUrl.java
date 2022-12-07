@@ -3,7 +3,9 @@ package com.tencent.essbasic.api;
 import com.tencent.essbasic.common.CreateFlowUtils;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
-import com.tencentcloudapi.essbasic.v20210526.models.*;
+import com.tencentcloudapi.essbasic.v20210526.models.Agent;
+import com.tencentcloudapi.essbasic.v20210526.models.CreateConsoleLoginUrlRequest;
+import com.tencentcloudapi.essbasic.v20210526.models.CreateConsoleLoginUrlResponse;
 
 /**
  * 用于创建电子签控制台登录链接。若企业未激活，调用同步企业信息、同步经办人信息
@@ -25,13 +27,13 @@ public class CreateConsoleLoginUrl {
             CreateConsoleLoginUrlRequest req = new CreateConsoleLoginUrlRequest();
 
             // 渠道应用相关信息
+            agent.setProxyAppId(""); //不需要此参数
             req.setAgent(agent);
             // 渠道侧合作企业名称，最大长度64个字符
             req.setProxyOrganizationName(proxyOrganizationName);
 
             // 返回的resp是一个CreateConsoleLoginUrlResponse的实例，与请求对象对应
-            CreateConsoleLoginUrlResponse resp = client.CreateConsoleLoginUrl(req);
-            return resp;
+            return client.CreateConsoleLoginUrl(req);
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }

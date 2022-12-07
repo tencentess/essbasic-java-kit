@@ -3,7 +3,9 @@ package com.tencent.essbasic.api;
 import com.tencent.essbasic.common.CreateFlowUtils;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
-import com.tencentcloudapi.essbasic.v20210526.models.*;
+import com.tencentcloudapi.essbasic.v20210526.models.Agent;
+import com.tencentcloudapi.essbasic.v20210526.models.ChannelGetTaskResultApiRequest;
+import com.tencentcloudapi.essbasic.v20210526.models.ChannelGetTaskResultApiResponse;
 
 /**
  * 渠道版查询转换任务状态
@@ -12,7 +14,7 @@ public class ChannelGetTaskResultApi {
     /**
      * 渠道版查询转换任务状态
      *
-     * @param agent   渠道应用相关信息
+     * @param agent  渠道应用相关信息
      * @param TaskId 任务Id，通过ChannelCreateConvertTaskApi接口获得
      * @return ChannelGetTaskResultApiResponse
      */
@@ -25,12 +27,11 @@ public class ChannelGetTaskResultApi {
 
             // 渠道应用相关信息
             req.setAgent(agent);
-            
+
             req.setTaskId(TaskId);
 
             // 返回的resp是一个ChannelGetTaskResultApiResponse的实例，与请求对象对应
-            ChannelGetTaskResultApiResponse resp = client.ChannelGetTaskResultApi(req);
-            return resp;
+            return client.ChannelGetTaskResultApi(req);
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }

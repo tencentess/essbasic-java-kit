@@ -2,7 +2,9 @@ package com.tencent.essbasic.api;
 
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
-import com.tencentcloudapi.essbasic.v20210526.models.*;
+import com.tencentcloudapi.essbasic.v20210526.models.Agent;
+import com.tencentcloudapi.essbasic.v20210526.models.OperateChannelTemplateRequest;
+import com.tencentcloudapi.essbasic.v20210526.models.OperateChannelTemplateResponse;
 
 import static com.tencent.essbasic.common.CreateFlowUtils.initClient;
 import static com.tencent.essbasic.common.CreateFlowUtils.setAgent;
@@ -12,8 +14,6 @@ import static com.tencent.essbasic.common.CreateFlowUtils.setAgent;
  */
 public class OperateChannelTemplate {
     /**
-     * 
-     *
      * @param agent      渠道应用相关信息
      * @param TemplateId 模板唯一标识
      * @return OperateChannelTemplateResponse
@@ -33,8 +33,7 @@ public class OperateChannelTemplate {
             req.setOperateType("SELECT");
 
             // 返回的resp是一个OperateChannelTemplateResponse的实例，与请求对象对应
-            OperateChannelTemplateResponse resp = client.OperateChannelTemplate(req);
-            return resp;
+            return client.OperateChannelTemplate(req);
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }

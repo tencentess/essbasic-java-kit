@@ -40,8 +40,7 @@ public class ChannelCreateFlowByFiles {
             req.setFileIds(new String[]{fileId});
 
             // 返回的resp是一个ChannelCreateFlowByFilesResponse的实例，与请求对象对应
-            ChannelCreateFlowByFilesResponse resp = client.ChannelCreateFlowByFiles(req);
-            return resp;
+            return client.ChannelCreateFlowByFiles(req);
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }

@@ -3,7 +3,9 @@ package com.tencent.essbasic.api;
 import com.tencent.essbasic.common.CreateFlowUtils;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
-import com.tencentcloudapi.essbasic.v20210526.models.*;
+import com.tencentcloudapi.essbasic.v20210526.models.Agent;
+import com.tencentcloudapi.essbasic.v20210526.models.ChannelCreateMultiFlowSignQRCodeRequest;
+import com.tencentcloudapi.essbasic.v20210526.models.ChannelCreateMultiFlowSignQRCodeResponse;
 
 /**
  * 用于创建一码多扫流程签署二维码。
@@ -36,9 +38,8 @@ public class ChannelCreateMultiFlowSignQRCode {
             req.setFlowName(flowName);
 
             // 返回的resp是一个ChannelCreateMultiFlowSignQRCodeResponse的实例，与请求对象对应
-            ChannelCreateMultiFlowSignQRCodeResponse resp = client.ChannelCreateMultiFlowSignQRCode(req);
 
-            return resp;
+            return client.ChannelCreateMultiFlowSignQRCode(req);
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }

@@ -3,7 +3,9 @@ package com.tencent.essbasic.api;
 import com.tencent.essbasic.common.CreateFlowUtils;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
-import com.tencentcloudapi.essbasic.v20210526.models.*;
+import com.tencentcloudapi.essbasic.v20210526.models.Agent;
+import com.tencentcloudapi.essbasic.v20210526.models.ChannelCreateConvertTaskApiRequest;
+import com.tencentcloudapi.essbasic.v20210526.models.ChannelCreateConvertTaskApiResponse;
 
 /**
  * 渠道创建文件转换任务
@@ -12,10 +14,10 @@ public class ChannelCreateConvertTaskApi {
     /**
      * 渠道创建文件转换任务
      *
-     * @param agent   渠道应用相关信息
+     * @param agent        渠道应用相关信息
      * @param ResourceType 资源类型 取值范围doc,docx,html之一
      * @param ResourceName 资源名称，长度限制为256字符
-     * @param ResourceId 资源Id，通过UploadFiles获取
+     * @param ResourceId   资源Id，通过UploadFiles获取
      * @return ChannelCreateConvertTaskApiResponse
      */
     public static ChannelCreateConvertTaskApiResponse channelCreateConvertTaskApi(String ResourceType, String ResourceName, String ResourceId, Agent agent) {
@@ -35,8 +37,7 @@ public class ChannelCreateConvertTaskApi {
             req.setResourceId(ResourceId);
 
             // 返回的resp是一个ChannelCreateConvertTaskApiResponse的实例，与请求对象对应
-            ChannelCreateConvertTaskApiResponse resp = client.ChannelCreateConvertTaskApi(req);
-            return resp;
+            return client.ChannelCreateConvertTaskApi(req);
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }
@@ -56,7 +57,7 @@ public class ChannelCreateConvertTaskApi {
             // 从UploadFiles接口获取到的ResourceId
             String ResourceId = "********************************";
 
-            ChannelCreateConvertTaskApiResponse channelCreateConvertTaskApiRes = ChannelCreateConvertTaskApi.channelCreateConvertTaskApi(ResourceType,  ResourceName,  ResourceId, agent);
+            ChannelCreateConvertTaskApiResponse channelCreateConvertTaskApiRes = ChannelCreateConvertTaskApi.channelCreateConvertTaskApi(ResourceType, ResourceName, ResourceId, agent);
             assert channelCreateConvertTaskApiRes != null;
             System.out.println(ChannelCreateConvertTaskApiResponse.toJsonString(channelCreateConvertTaskApiRes));
         } catch (Exception e) {

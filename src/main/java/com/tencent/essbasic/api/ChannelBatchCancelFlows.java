@@ -3,15 +3,19 @@ package com.tencent.essbasic.api;
 import com.tencent.essbasic.common.CreateFlowUtils;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
-import com.tencentcloudapi.essbasic.v20210526.models.*;
+import com.tencentcloudapi.essbasic.v20210526.models.Agent;
+import com.tencentcloudapi.essbasic.v20210526.models.ChannelBatchCancelFlowsRequest;
+import com.tencentcloudapi.essbasic.v20210526.models.ChannelBatchCancelFlowsResponse;
 
 /**
- * 指定需要批量撤销的签署流程Id，批量撤销合同
- * 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；接口失败后返回错误信息
+ * 电子签渠道版-根据签署流程id批量撤销合同
  */
 public class ChannelBatchCancelFlows {
     /**
-     * 创建跳转小程序查看或签署的链接
+     * 指定需要批量撤销的签署流程Id，批量撤销合同
+     * 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；接口失败后返回错误信息
+     * 注意:
+     * 能撤回合同的只能是合同的发起人或者发起企业的超管、法人
      *
      * @param agent   渠道应用相关信息
      * @param flowIds 签署流程Id数组，最多100个，超过100不处理
@@ -30,8 +34,7 @@ public class ChannelBatchCancelFlows {
             req.setFlowIds(flowIds);
 
             // 返回的resp是一个ChannelBatchCancelFlowsResponse的实例，与请求对象对应
-            ChannelBatchCancelFlowsResponse resp = client.ChannelBatchCancelFlows(req);
-            return resp;
+            return client.ChannelBatchCancelFlows(req);
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }

@@ -2,11 +2,14 @@ package com.tencent.essbasic.api;
 
 import com.tencent.essbasic.config.Config;
 import com.tencentcloudapi.common.Credential;
+import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.common.profile.ClientProfile;
 import com.tencentcloudapi.common.profile.HttpProfile;
-import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
-import com.tencentcloudapi.essbasic.v20210526.models.*;
+import com.tencentcloudapi.essbasic.v20210526.models.Agent;
+import com.tencentcloudapi.essbasic.v20210526.models.UploadFile;
+import com.tencentcloudapi.essbasic.v20210526.models.UploadFilesRequest;
+import com.tencentcloudapi.essbasic.v20210526.models.UploadFilesResponse;
 
 import static com.tencent.essbasic.common.CreateFlowUtils.convertImageFileToBase64;
 import static com.tencent.essbasic.common.CreateFlowUtils.setAgent;
@@ -47,8 +50,7 @@ public class UploadFiles {
             req.setBusinessType("DOCUMENT");
 
             // 返回的resp是一个UploadFilesResponse的实例，与请求对象对应
-            UploadFilesResponse resp = client.UploadFiles(req);
-            return resp;
+            return client.UploadFiles(req);
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }

@@ -3,17 +3,20 @@ package com.tencent.essbasic.api;
 import com.tencent.essbasic.common.CreateFlowUtils;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
-import com.tencentcloudapi.essbasic.v20210526.models.*;
+import com.tencentcloudapi.essbasic.v20210526.models.Agent;
+import com.tencentcloudapi.essbasic.v20210526.models.DownloadFlowInfo;
+import com.tencentcloudapi.essbasic.v20210526.models.GetDownloadFlowUrlRequest;
+import com.tencentcloudapi.essbasic.v20210526.models.GetDownloadFlowUrlResponse;
 
 /**
  * 此接口（GetDownloadFlowUrl）用于创建电子签批量下载地址，让合作企业进入控制台直接下载，支持客户合同（流程）按照自定义文件夹形式 分类下载。
-当前接口限制最多合同（流程）50个.
+ * 当前接口限制最多合同（流程）50个.
  */
 public class GetDownloadFlowUrl {
     /**
      * 创建电子签批量下载地址，让合作企业进入控制台直接下载
      *
-     * @param agent   渠道应用相关信息
+     * @param agent             渠道应用相关信息
      * @param DownloadFlowInfos 文件夹数组，签署流程总数不能超过50个，一个文件夹下，不能超过20个签署流程
      * @return GetDownloadFlowUrlResponse
      */
@@ -26,12 +29,11 @@ public class GetDownloadFlowUrl {
 
             // 渠道应用相关信息
             req.setAgent(agent);
-            
+
             req.setDownLoadFlows(DownloadFlowInfos);
 
             // 返回的resp是一个GetDownloadFlowUrlResponse的实例，与请求对象对应
-            GetDownloadFlowUrlResponse resp = client.GetDownloadFlowUrl(req);
-            return resp;
+            return client.GetDownloadFlowUrl(req);
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }

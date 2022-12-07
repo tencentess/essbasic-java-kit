@@ -3,20 +3,23 @@ package com.tencent.essbasic.api;
 import com.tencent.essbasic.common.CreateFlowUtils;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
-import com.tencentcloudapi.essbasic.v20210526.models.*;
+import com.tencentcloudapi.essbasic.v20210526.models.Agent;
+import com.tencentcloudapi.essbasic.v20210526.models.CreateChannelFlowEvidenceReportRequest;
+import com.tencentcloudapi.essbasic.v20210526.models.CreateChannelFlowEvidenceReportResponse;
 
 /**
- * 创建出证报告，返回报告 URL
+ * 创建出证报告，返回报告 ID
  */
+
 public class CreateChannelFlowEvidenceReport {
     /**
-     * 创建出证报告，返回报告 URL
+     * 创建并返回出证报告
      *
-     * @param agent   渠道应用相关信息
-     * @param FlowId 签署流程Id
+     * @param agent  渠道应用相关信息
+     * @param flowId 签署流程编号
      * @return CreateChannelFlowEvidenceReportResponse
      */
-    public static CreateChannelFlowEvidenceReportResponse createChannelFlowEvidenceReport(String FlowId, Agent agent) {
+    public static CreateChannelFlowEvidenceReportResponse createChannelFlowEvidenceReport(Agent agent, String flowId) {
         try {
             // 实例化一个client
             EssbasicClient client = CreateFlowUtils.initClient();
@@ -25,12 +28,11 @@ public class CreateChannelFlowEvidenceReport {
 
             // 渠道应用相关信息
             req.setAgent(agent);
-
-            req.setFlowId(FlowId);
+            // 签署流程编号
+            req.setFlowId(flowId);
 
             // 返回的resp是一个CreateChannelFlowEvidenceReportResponse的实例，与请求对象对应
-            CreateChannelFlowEvidenceReportResponse resp = client.CreateChannelFlowEvidenceReport(req);
-            return resp;
+            return client.CreateChannelFlowEvidenceReport(req);
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }
@@ -42,13 +44,12 @@ public class CreateChannelFlowEvidenceReport {
      */
     public static void main(String[] args) {
         try {
-            // 设置agent参数
             Agent agent = CreateFlowUtils.setAgent();
-            // 发起合同成功的签署流程Id
             String flowId = "*********************";
-            CreateChannelFlowEvidenceReportResponse createChannelFlowEvidenceReportRes = CreateChannelFlowEvidenceReport.createChannelFlowEvidenceReport(flowId, agent);
-            assert createChannelFlowEvidenceReportRes != null;
-            System.out.println(CreateChannelFlowEvidenceReportResponse.toJsonString(createChannelFlowEvidenceReportRes));
+            CreateChannelFlowEvidenceReportResponse loginUrlResponse = CreateChannelFlowEvidenceReport.
+                    createChannelFlowEvidenceReport(agent, flowId);
+            assert loginUrlResponse != null;
+            System.out.println(CreateChannelFlowEvidenceReportResponse.toJsonString(loginUrlResponse));
         } catch (Exception e) {
             e.printStackTrace();
         }

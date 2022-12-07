@@ -3,7 +3,9 @@ package com.tencent.essbasic.api;
 import com.tencent.essbasic.common.CreateFlowUtils;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
-import com.tencentcloudapi.essbasic.v20210526.models.*;
+import com.tencentcloudapi.essbasic.v20210526.models.Agent;
+import com.tencentcloudapi.essbasic.v20210526.models.DescribeFlowDetailInfoRequest;
+import com.tencentcloudapi.essbasic.v20210526.models.DescribeFlowDetailInfoResponse;
 
 /**
  * 此接口用于查询合同(签署流程)的详细信息。
@@ -30,8 +32,7 @@ public class DescribeFlowDetailInfo {
             req.setFlowIds(flowIds);
 
             // 返回的resp是一个DescribeFlowDetailInfoResponse的实例，与请求对象对应
-            DescribeFlowDetailInfoResponse resp = client.DescribeFlowDetailInfo(req);
-            return resp;
+            return client.DescribeFlowDetailInfo(req);
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }

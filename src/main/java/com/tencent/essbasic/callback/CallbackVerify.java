@@ -19,7 +19,7 @@ public class CallbackVerify {
             // 1. 取出header [Content-Signature]
             String signFromHeader = "***********";
             // 2. 验证签名
-            String hash = HMACSHA256(payload, secretToken);
+            String hash = "sha256=" + HMACSHA256(payload, secretToken);
 
             //3. 如果验证通过，继续处理。如果不通过，忽略该请求
             System.out.println(hash.equals(signFromHeader));

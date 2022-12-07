@@ -1,10 +1,11 @@
 package com.tencent.essbasic.api;
 
 import com.tencentcloudapi.essbasic.v20210526.models.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.tencent.essbasic.common.CreateFlowUtils.*;
+import static com.tencent.essbasic.common.CreateFlowUtils.setAgent;
 
 /**
  * 通过文件base64直接发起签署流程，返回flowid
@@ -13,13 +14,13 @@ public class CreateFlowByFileDirectly {
     /**
      * 通过文件base64直接发起签署流程
      *
-     * @param fileBase64    Base64编码后的文件内容
+     * @param fileBase64        Base64编码后的文件内容
      * @param flowApproverInfos 签署流程签约方列表
-     * @param flowName 签署流程名称
+     * @param flowName          签署流程名称
      * @return Map<String, String>
      */
     public static Map<String, String> createFlowByFileDirectly(String flowName, String fileBase64,
-                                                               FlowApproverInfo[] flowApproverInfos){
+                                                               FlowApproverInfo[] flowApproverInfos) {
         Map<String, String> resp = new HashMap<>();
         // 设置agent参数
         Agent agent = setAgent();

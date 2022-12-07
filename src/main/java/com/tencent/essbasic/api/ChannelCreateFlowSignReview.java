@@ -3,7 +3,9 @@ package com.tencent.essbasic.api;
 import com.tencent.essbasic.common.CreateFlowUtils;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
-import com.tencentcloudapi.essbasic.v20210526.models.*;
+import com.tencentcloudapi.essbasic.v20210526.models.Agent;
+import com.tencentcloudapi.essbasic.v20210526.models.ChannelCreateFlowSignReviewRequest;
+import com.tencentcloudapi.essbasic.v20210526.models.ChannelCreateFlowSignReviewResponse;
 
 /**
  * 提交企业签署流程审批结果
@@ -14,12 +16,12 @@ public class ChannelCreateFlowSignReview {
     /**
      * 提交企业签署流程审批结果
      *
-     * @param agent   渠道应用相关信息
-     * @param flowId 资源所对应的签署流程Id
+     * @param agent      渠道应用相关信息
+     * @param flowId     资源所对应的签署流程Id
      * @param ReviewType 企业内部审核结果  PASS: 通过，REJECT: 拒绝
      * @return ChannelCreateFlowSignReviewResponse
      */
-    public static ChannelCreateFlowSignReviewResponse channelCreateFlowSignReview(String flowId,String ReviewType, Agent agent) {
+    public static ChannelCreateFlowSignReviewResponse channelCreateFlowSignReview(String flowId, String ReviewType, Agent agent) {
         try {
             // 实例化一个client
             EssbasicClient client = CreateFlowUtils.initClient();
@@ -33,8 +35,7 @@ public class ChannelCreateFlowSignReview {
             req.setReviewType(ReviewType);
 
             // 返回的resp是一个ChannelCreateFlowSignReviewResponse的实例，与请求对象对应
-            ChannelCreateFlowSignReviewResponse resp = client.ChannelCreateFlowSignReview(req);
-            return resp;
+            return client.ChannelCreateFlowSignReview(req);
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }
@@ -51,7 +52,7 @@ public class ChannelCreateFlowSignReview {
             // 发起合同成功的签署流程Id
             String flowId = "*********************";
             String ReviewType = "PASS";
-            ChannelCreateFlowSignReviewResponse channelCreateFlowSignReviewRes = ChannelCreateFlowSignReview.channelCreateFlowSignReview(flowId,ReviewType, agent);
+            ChannelCreateFlowSignReviewResponse channelCreateFlowSignReviewRes = ChannelCreateFlowSignReview.channelCreateFlowSignReview(flowId, ReviewType, agent);
             assert channelCreateFlowSignReviewRes != null;
             System.out.println(ChannelCreateFlowSignReviewResponse.toJsonString(channelCreateFlowSignReviewRes));
         } catch (Exception e) {

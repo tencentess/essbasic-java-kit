@@ -3,7 +3,9 @@ package com.tencent.essbasic.api;
 import com.tencent.essbasic.common.CreateFlowUtils;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
-import com.tencentcloudapi.essbasic.v20210526.models.*;
+import com.tencentcloudapi.essbasic.v20210526.models.Agent;
+import com.tencentcloudapi.essbasic.v20210526.models.CreateSealByImageRequest;
+import com.tencentcloudapi.essbasic.v20210526.models.CreateSealByImageResponse;
 
 import static com.tencent.essbasic.common.CreateFlowUtils.convertImageFileToBase64;
 
@@ -14,8 +16,8 @@ public class CreateSealByImage {
     /**
      * 渠道通过图片为子客代创建印章，图片最大5m；此接口不可直接使用，需要运营申请
      *
-     * @param agent   渠道应用相关信息
-     * @param sealName 印章名称，最大长度不超过30字符
+     * @param agent     渠道应用相关信息
+     * @param sealName  印章名称，最大长度不超过30字符
      * @param sealImage 印章图片base64
      * @return CreateSealByImageResponse
      */
@@ -35,8 +37,7 @@ public class CreateSealByImage {
             req.setSealImage(sealImage);
 
             // 返回的resp是一个CreateSealByImageResponse的实例，与请求对象对应
-            CreateSealByImageResponse resp = client.CreateSealByImage(req);
-            return resp;
+            return client.CreateSealByImage(req);
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }
@@ -51,9 +52,9 @@ public class CreateSealByImage {
             // 设置agent参数
             Agent agent = CreateFlowUtils.setAgent();
             String sealName = "xxx";
-            String filePath = "blank.pdf";
+            String filePath = "test_seal.png";
             String sealImage = convertImageFileToBase64(filePath);
-            
+
             CreateSealByImageResponse createSealByImageRes = CreateSealByImage.createSealByImage(sealName, sealImage, agent);
             assert createSealByImageRes != null;
             System.out.println(CreateSealByImageResponse.toJsonString(createSealByImageRes));

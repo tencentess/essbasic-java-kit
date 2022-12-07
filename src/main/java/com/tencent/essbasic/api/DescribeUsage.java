@@ -3,7 +3,9 @@ package com.tencent.essbasic.api;
 import com.tencent.essbasic.common.CreateFlowUtils;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
-import com.tencentcloudapi.essbasic.v20210526.models.*;
+import com.tencentcloudapi.essbasic.v20210526.models.Agent;
+import com.tencentcloudapi.essbasic.v20210526.models.DescribeUsageRequest;
+import com.tencentcloudapi.essbasic.v20210526.models.DescribeUsageResponse;
 
 /**
  * 此接口（DescribeUsage）用于获取渠道所有合作企业流量消耗情况。
@@ -13,12 +15,12 @@ public class DescribeUsage {
     /**
      * 获取渠道所有合作企业流量消耗情况
      *
-     * @param agent   渠道应用相关信息
+     * @param agent     渠道应用相关信息
      * @param StartDate 资源所对应的签署流程Id
-     * @param EndDate 资源所对应的签署流程Id
+     * @param EndDate   资源所对应的签署流程Id
      * @return DescribeUsageResponse
      */
-    public static DescribeUsageResponse describeUsage(String StartDate,String EndDate, Agent agent) {
+    public static DescribeUsageResponse describeUsage(String StartDate, String EndDate, Agent agent) {
         try {
             // 实例化一个client
             EssbasicClient client = CreateFlowUtils.initClient();
@@ -27,13 +29,12 @@ public class DescribeUsage {
 
             // 渠道应用相关信息
             req.setAgent(agent);
-            
+
             req.setStartDate(StartDate);
             req.setEndDate(EndDate);
 
             // 返回的resp是一个DescribeUsageResponse的实例，与请求对象对应
-            DescribeUsageResponse resp = client.DescribeUsage(req);
-            return resp;
+            return client.DescribeUsage(req);
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }

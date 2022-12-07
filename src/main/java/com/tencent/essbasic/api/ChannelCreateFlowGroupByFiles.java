@@ -12,11 +12,11 @@ public class ChannelCreateFlowGroupByFiles {
     /**
      * 用于通过多文件创建合同组签署流程。
      *
-     * @param agent   渠道应用相关信息
+     * @param agent             渠道应用相关信息
      * @param flowApproverInfos 签署流程签约方列表
      * @param flowName          签署流程名称
      * @param fileId            签署文件资源Id
-     * @param flowGroupName 合同组名称，长度不超过200个字符
+     * @param flowGroupName     合同组名称，长度不超过200个字符
      * @return ChannelCreateFlowGroupByFilesResponse
      */
     public static ChannelCreateFlowGroupByFilesResponse channelCreateFlowGroupByFiles(Agent agent, FlowApproverInfo[] flowApproverInfos, String flowName, String fileId, String flowGroupName) {
@@ -39,11 +39,9 @@ public class ChannelCreateFlowGroupByFiles {
             flowFileInfo.setFileIds(new String[]{fileId});
 
             req.setFlowFileInfos(new FlowFileInfo[]{flowFileInfo});
-
             
             // 返回的resp是一个ChannelCreateFlowGroupByFilesResponse的实例，与请求对象对应
-            ChannelCreateFlowGroupByFilesResponse resp = client.ChannelCreateFlowGroupByFiles(req);
-            return resp;
+            return client.ChannelCreateFlowGroupByFiles(req);
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }
@@ -55,7 +53,7 @@ public class ChannelCreateFlowGroupByFiles {
      */
     public static void main(String[] args) {
         try {
-             // 从UploadFiles接口获取到的fileId
+            // 从UploadFiles接口获取到的fileId
             String fileId = "********************************";
 
             // 签署流程名称,最大长度200个字符
@@ -113,7 +111,7 @@ public class ChannelCreateFlowGroupByFiles {
             flowApproverInfo.setSignComponents(components);
             FlowApproverInfo[] flowApproverInfos = new FlowApproverInfo[]{flowApproverInfo};
 
-            ChannelCreateFlowGroupByFilesResponse channelCreateFlowGroupByFilesRes = ChannelCreateFlowGroupByFiles.channelCreateFlowGroupByFiles(agent,flowApproverInfos, flowName, fileId, flowGroupName);
+            ChannelCreateFlowGroupByFilesResponse channelCreateFlowGroupByFilesRes = ChannelCreateFlowGroupByFiles.channelCreateFlowGroupByFiles(agent, flowApproverInfos, flowName, fileId, flowGroupName);
             assert channelCreateFlowGroupByFilesRes != null;
             System.out.println(ChannelCreateFlowGroupByFilesResponse.toJsonString(channelCreateFlowGroupByFilesRes));
         } catch (Exception e) {

@@ -3,7 +3,9 @@ package com.tencent.essbasic.api;
 import com.tencent.essbasic.common.CreateFlowUtils;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
-import com.tencentcloudapi.essbasic.v20210526.models.*;
+import com.tencentcloudapi.essbasic.v20210526.models.Agent;
+import com.tencentcloudapi.essbasic.v20210526.models.ChannelCreateBatchCancelFlowUrlRequest;
+import com.tencentcloudapi.essbasic.v20210526.models.ChannelCreateBatchCancelFlowUrlResponse;
 
 /**
  * 指定需要批量撤销的签署流程Id，获取批量撤销链接
@@ -30,8 +32,7 @@ public class ChannelCreateBatchCancelFlowUrl {
             req.setFlowIds(flowIds);
 
             // 返回的resp是一个ChannelCreateBatchCancelFlowUrlResponse的实例，与请求对象对应
-            ChannelCreateBatchCancelFlowUrlResponse resp = client.ChannelCreateBatchCancelFlowUrl(req);
-            return resp;
+            return client.ChannelCreateBatchCancelFlowUrl(req);
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }

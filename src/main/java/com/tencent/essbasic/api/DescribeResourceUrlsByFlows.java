@@ -3,7 +3,9 @@ package com.tencent.essbasic.api;
 import com.tencent.essbasic.common.CreateFlowUtils;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
-import com.tencentcloudapi.essbasic.v20210526.models.*;
+import com.tencentcloudapi.essbasic.v20210526.models.Agent;
+import com.tencentcloudapi.essbasic.v20210526.models.DescribeResourceUrlsByFlowsRequest;
+import com.tencentcloudapi.essbasic.v20210526.models.DescribeResourceUrlsByFlowsResponse;
 
 /**
  * 根据签署流程信息批量获取资源下载链接，需合作企业先进行授权
@@ -29,8 +31,7 @@ public class DescribeResourceUrlsByFlows {
             req.setFlowIds(flowIds);
 
             // 返回的resp是一个DescribeResourceUrlsByFlowsResponse的实例，与请求对象对应
-            DescribeResourceUrlsByFlowsResponse resp = client.DescribeResourceUrlsByFlows(req);
-            return resp;
+            return client.DescribeResourceUrlsByFlows(req);
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }

@@ -2,7 +2,9 @@ package com.tencent.essbasic.api;
 
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
-import com.tencentcloudapi.essbasic.v20210526.models.*;
+import com.tencentcloudapi.essbasic.v20210526.models.Agent;
+import com.tencentcloudapi.essbasic.v20210526.models.DescribeTemplatesRequest;
+import com.tencentcloudapi.essbasic.v20210526.models.DescribeTemplatesResponse;
 
 import static com.tencent.essbasic.common.CreateFlowUtils.initClient;
 import static com.tencent.essbasic.common.CreateFlowUtils.setAgent;
@@ -31,8 +33,7 @@ public class DescribeTemplates {
             req.setTemplateId(TemplateId);
 
             // 返回的resp是一个DescribeTemplatesResponse的实例，与请求对象对应
-            DescribeTemplatesResponse resp = client.DescribeTemplates(req);
-            return resp;
+            return client.DescribeTemplates(req);
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }

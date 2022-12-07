@@ -6,7 +6,6 @@ import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
 import com.tencentcloudapi.essbasic.v20210526.models.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -34,8 +33,7 @@ public class CreateFlowsByTemplates {
             req.setFlowInfos(flowInfos);
 
             // 返回的resp是一个CreateFlowsByTemplatesResponse的实例，与请求对象对应
-            CreateFlowsByTemplatesResponse resp = client.CreateFlowsByTemplates(req);
-            return resp;
+            return client.CreateFlowsByTemplates(req);
         } catch (TencentCloudSDKException e) {
             System.out.println(e.toString());
         }
