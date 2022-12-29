@@ -5,16 +5,12 @@ import com.tencent.essbasic.common.CreateFlowUtils;
 import com.tencentcloudapi.essbasic.v20210526.models.*;
 import com.tencent.essbasic.config.Config;
 
-import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * ByTemplate
- */
 public class ByTemplate {
-    // 构造签署人
+    // 构造签署人 - 以B2B2C为例, 实际请根据自己的场景构造签署方、控件
     public static FlowApproverInfo[] BuildApprovers(List<Recipient> recipients) {
 
         List<FlowApproverInfo> approvers = new ArrayList<>();
@@ -31,9 +27,11 @@ public class ByTemplate {
         for (Recipient recipient : recipients) {
             switch (recipient.getRecipientType()) {
                 case "ENTERPRISE":
+                    // 另一家企业签署方
                     approvers.add(BuildOrganizationApprover(organizationName, organizationOpenId, openId, recipient.getRecipientId()));
                     break;
                 case "INDIVIDUAL":
+                    // 个人签署方
                     approvers.add(BuildPersonApprover(personName,personMobile, recipient.getRecipientId()));
                     break;
 
@@ -50,17 +48,20 @@ public class ByTemplate {
         // 签署参与者信息
         // 个人签署方
         FlowApproverInfo flowApproverInfo = new FlowApproverInfo();
-        // 签署人类型，PERSON-个人；
-        // ORGANIZATION-企业；
-        // ENTERPRISESERVER-企业静默签;
-        // 注：ENTERPRISESERVER 类型仅用于使用文件创建流程（ChannelCreateFlowByFiles）接口；并且仅能指定发起方企业签署方为静默签署；
+        
+        // 签署人类型
+        // PERSON-个人/自然人；
+        // ORGANIZATION-企业（企业签署方或模版发起时的企业静默签）；
+        // ENTERPRISESERVER-企业静默签（文件发起时的企业静默签字）。
         flowApproverInfo.setApproverType("PERSON");
-        // 本环节需要操作人的名字
-        flowApproverInfo.setName(name);
-        // 本环节需要操作人的手机号
-        flowApproverInfo.setMobile(mobile);
-        flowApproverInfo.setRecipientId(recipientId);
 
+        // 签署人姓名，最大长度50个字符
+        flowApproverInfo.setName(name);
+        // 签署人手机号，脱敏显示。大陆手机号为11位，暂不支持海外手机号
+        flowApproverInfo.setMobile(mobile);
+
+        // 设置模版中的参与方RecipientId
+        flowApproverInfo.setRecipientId(recipientId);
 
         return flowApproverInfo;
     }
@@ -70,20 +71,26 @@ public class ByTemplate {
                                                              String openId, String recipientId) {
 
         // 签署参与者信息
-        // 个人签署方
+        // 企业签署方
         FlowApproverInfo flowApproverInfo = new FlowApproverInfo();
-        // 签署人类型，PERSON-个人；
-        // ORGANIZATION-企业；
-        // ENTERPRISESERVER-企业静默签;
-        // 注：ENTERPRISESERVER 类型仅用于使用文件创建流程（ChannelCreateFlowByFiles）接口；并且仅能指定发起方企业签署方为静默签署；
-        flowApproverInfo.setApproverType("ORGANIZATION");
-        // 本环节需要企业操作人的企业名称
-        flowApproverInfo.setOrganizationName(organizationName);
-        //
-        flowApproverInfo.setOrganizationOpenId(organizationOpenId);
-        flowApproverInfo.setOpenId(openId);
-        flowApproverInfo.setRecipientId(recipientId);
 
+        // 签署人类型
+        // PERSON-个人/自然人；
+        // ORGANIZATION-企业（企业签署方或模版发起时的企业静默签）；
+        // ENTERPRISESERVER-企业静默签（文件发起时的企业静默签字）。
+        flowApproverInfo.setApproverType("ORGANIZATION");
+
+        // 企业签署方工商营业执照上的企业名称，签署方为非发起方企业场景下必传，最大长度64个字符；
+        flowApproverInfo.setOrganizationName(organizationName);
+        // 如果签署方是子客企业，此处需要传子客企业的OrganizationOpenId
+        // 企业签署方在同一渠道下的其他合作企业OpenId，签署方为非发起方企业场景下必传，最大长度64个字符；
+        flowApproverInfo.setOrganizationOpenId(organizationOpenId);
+        // 如果签署方是子客企业，此处需要传子客企业经办人的OpenId
+	    // 当签署方为同一渠道下的员工时，该字段若不指定，则发起【待领取】的流程
+        flowApproverInfo.setOpenId(openId);
+
+        // 设置模版中的参与方RecipientId
+        flowApproverInfo.setRecipientId(recipientId);
 
         return flowApproverInfo;
     }
@@ -91,18 +98,21 @@ public class ByTemplate {
     // 打包企业静默签署方参与者信息
     public static FlowApproverInfo BuildServerSignApprover() {
         // 签署参与者信息
-        // 个人签署方
+        // 企业静默签
         FlowApproverInfo flowApproverInfo = new FlowApproverInfo();
-        // 签署人类型，PERSON-个人；
-        // ORGANIZATION-企业；
-        // ENTERPRISESERVER-企业静默签;
-        // 注：ENTERPRISESERVER 类型仅用于使用文件创建流程（ChannelCreateFlowByFiles）接口；并且仅能指定发起方企业签署方为静默签署；
+
+        // 签署人类型
+        // PERSON-个人/自然人；
+        // ORGANIZATION-企业（企业签署方或模版发起时的企业静默签）；
+        // ENTERPRISESERVER-企业静默签（文件发起时的企业静默签字）。
         flowApproverInfo.setApproverType("ENTERPRISESERVER");
+
+        // 注：此时发起方会替换为接口调用的企业+经办人，所以不需要传签署方信息
 
         return flowApproverInfo;
     }
 
-    //获取所有签署人信息
+    // 从模板中获取参与人信息，用于模板发起合同
     public static Recipient[] GetRecipients(String templateId) {
         DescribeTemplatesResponse templatesResponse = DescribeTemplates.describeTemplates(CreateFlowUtils.setAgent(),
                 templateId);
@@ -111,7 +121,8 @@ public class ByTemplate {
                 map(DescribeTemplatesResponse::getTemplates).map(rec -> rec[0].getRecipients()).orElse(null);
     }
 
-    // 构建内容控件填充结构
+    // 内容控件填充结构，详细说明参考
+    // https://cloud.tencent.com/document/api/1420/61525#FormField
     public static FormField BuildFormField(String componentName, String componentValue){
         FormField formField = new FormField();
         formField.setComponentName(componentName);

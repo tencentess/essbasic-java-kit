@@ -16,6 +16,7 @@ public class ChannelBatchCancelFlows {
      * 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；接口失败后返回错误信息
      * 注意:
      * 能撤回合同的只能是合同的发起人或者发起企业的超管、法人
+     * 详细参考 https://cloud.tencent.com/document/api/1420/80391
      *
      * @param agent   渠道应用相关信息
      * @param flowIds 签署流程Id数组，最多100个，超过100不处理
@@ -28,9 +29,10 @@ public class ChannelBatchCancelFlows {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             ChannelBatchCancelFlowsRequest req = new ChannelBatchCancelFlowsRequest();
 
-            // 渠道应用相关信息
+            // 渠道应用相关信息。 
+	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
             req.setAgent(agent);
-            // 资源所对应的签署流程Id
+            // 签署流程Id数组，最多100个，超过100不处理
             req.setFlowIds(flowIds);
 
             // 返回的resp是一个ChannelBatchCancelFlowsResponse的实例，与请求对象对应

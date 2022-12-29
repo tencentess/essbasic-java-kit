@@ -9,6 +9,7 @@ import com.tencentcloudapi.essbasic.v20210526.models.DescribeChannelFlowEvidence
 
 /**
  * 查询出证报告，返回报告 URL。
+ * 详细参考 https://cloud.tencent.com/document/api/1420/83442
  */
 
 public class DescribeChannelFlowEvidenceReport {
@@ -26,7 +27,8 @@ public class DescribeChannelFlowEvidenceReport {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             DescribeChannelFlowEvidenceReportRequest req = new DescribeChannelFlowEvidenceReportRequest();
 
-            // 渠道应用相关信息
+            // 渠道应用相关信息。 
+	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
             req.setAgent(agent);
             // 出证报告编号
             req.setReportId(reportId);

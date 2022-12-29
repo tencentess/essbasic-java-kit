@@ -10,7 +10,7 @@ import com.tencentcloudapi.essbasic.v20210526.models.CreateSealByImageResponse;
 import static com.tencent.essbasic.common.CreateFlowUtils.convertImageFileToBase64;
 
 /**
- * 渠道通过图片为子客代创建印章，图片最大5m；此接口不可直接使用，需要运营申请
+ * 渠道通过图片为子客代创建印章，图片最大5MB
  */
 public class CreateSealByImage {
     /**

@@ -11,6 +11,7 @@ import static com.tencent.essbasic.common.CreateFlowUtils.setAgent;
 
 /**
  * 通过此接口（DescribeTemplates）查询该企业在电子签渠道版中配置的有效模板列表
+ * 详细参考 https://cloud.tencent.com/document/api/1420/61521
  */
 public class DescribeTemplates {
     /**
@@ -27,10 +28,14 @@ public class DescribeTemplates {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             DescribeTemplatesRequest req = new DescribeTemplatesRequest();
 
-            // 渠道应用相关信息
+            // 渠道应用相关信息。 
+	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
             req.setAgent(agent);
-            // 模板唯一标识
+            // 模板唯一标识，查询单个模板时使用
             req.setTemplateId(TemplateId);
+
+            // 其他查询参数参考官网文档
+	        // https://cloud.tencent.com/document/api/1420/61521
 
             // 返回的resp是一个DescribeTemplatesResponse的实例，与请求对象对应
             return client.DescribeTemplates(req);

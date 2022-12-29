@@ -10,7 +10,9 @@ import com.tencentcloudapi.essbasic.v20210526.models.SyncProxyOrganizationRespon
 import static com.tencent.essbasic.common.CreateFlowUtils.convertImageFileToBase64;
 
 /**
- * 同步企业信息
+ * 用于同步渠道子客企业信息，主要是子客企业的营业执照，便于子客企业开通过程中不用手动上传。
+ * 若有需要调用此接口，需要在创建控制链接CreateConsoleLoginUrl之后即刻进行调用。
+ * 详细参考 https://cloud.tencent.com/document/api/1420/61518
  */
 public class SyncProxyOrganization {
     /**
@@ -33,7 +35,8 @@ public class SyncProxyOrganization {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             SyncProxyOrganizationRequest req = new SyncProxyOrganizationRequest();
 
-            // 渠道应用相关信息
+            // 应用信息
+	        // 此接口Agent.AppId、Agent.ProxyOrganizationOpenId必填
             req.setAgent(agent);
             // 渠道侧合作企业名称，最大长度64个字符
             req.setProxyOrganizationName(proxyOrganizationName);

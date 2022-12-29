@@ -6,7 +6,7 @@ import com.tencentcloudapi.essbasic.v20210526.models.DescribeResourceUrlsByFlows
 import com.tencentcloudapi.essbasic.v20210526.models.UserInfo;
 
 /**
- * 查询文件下载URL
+ * 查询文件下载URL 对于DescribeResourceUrlsByFlows的封装
  * 适用场景：通过传参合同流程编号，下载对应的合同PDF文件流到本地。
  */
 

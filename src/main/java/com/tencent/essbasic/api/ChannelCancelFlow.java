@@ -13,9 +13,10 @@ import com.tencentcloudapi.essbasic.v20210526.models.ChannelCancelFlowResponse;
 public class ChannelCancelFlow {
     /**
      * 渠道版撤销签署流程接口
-     * 仅支持未签署完成的合同
+     * 可以撤回：未全部签署完成；不可以撤回（终态）：已全部签署完成、已拒签、已过期、已撤回
      * 注意:
      * 能撤回合同的只能是合同的发起人或者发起企业的超管、法人
+     * 详细参考 https://cloud.tencent.com/document/api/1420/81869
      *
      * @param agent               渠道应用相关信息
      * @param flowId              签署流程编号
@@ -31,9 +32,10 @@ public class ChannelCancelFlow {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             ChannelCancelFlowRequest req = new ChannelCancelFlowRequest();
 
-            // 渠道应用相关信息
+           // 渠道应用相关信息。 
+	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
             req.setAgent(agent);
-            // 签署流程编号
+            // 签署流程Id数组，最多100个，超过100不处理
             req.setFlowId(flowId);
             // 撤回原因，最大不超过200字符
             req.setCancelMessage(cancelMessage);

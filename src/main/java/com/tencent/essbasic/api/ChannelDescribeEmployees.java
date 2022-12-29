@@ -10,6 +10,7 @@ import com.tencentcloudapi.essbasic.v20210526.models.Filter;
 
 /**
  * 查询企业员工
+ * 详细参考 https://cloud.tencent.com/document/api/1420/81119
  */
 public class ChannelDescribeEmployees {
     /**
@@ -31,7 +32,8 @@ public class ChannelDescribeEmployees {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             ChannelDescribeEmployeesRequest req = new ChannelDescribeEmployeesRequest();
 
-            // 渠道应用相关信息
+            // 渠道应用相关信息。 
+	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
             req.setAgent(agent);
             // 查询过滤实名用户，Key为Status，Values为["IsVerified"]
             // 根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]

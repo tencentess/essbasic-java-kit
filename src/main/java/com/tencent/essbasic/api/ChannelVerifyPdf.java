@@ -9,6 +9,7 @@ import com.tencentcloudapi.essbasic.v20210526.models.ChannelVerifyPdfResponse;
 
 /**
  * 合同文件验签
+ * 详细参考 https://cloud.tencent.com/document/api/1420/80799
  */
 public class ChannelVerifyPdf {
     /**
@@ -25,7 +26,8 @@ public class ChannelVerifyPdf {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             ChannelVerifyPdfRequest req = new ChannelVerifyPdfRequest();
 
-            // 渠道应用相关信息
+            // 渠道应用相关信息。 
+	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
             req.setAgent(agent);
             // 合同Id，流程Id
             req.setFlowId(flowId);

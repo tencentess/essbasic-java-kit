@@ -7,6 +7,7 @@ import com.tencentcloudapi.essbasic.v20210526.models.*;
 
 /**
  * 用于通过多文件创建合同组签署流程。
+ * 详细参考 https://cloud.tencent.com/document/api/1420/80390
  */
 public class ChannelCreateFlowGroupByFiles {
     /**
@@ -26,7 +27,8 @@ public class ChannelCreateFlowGroupByFiles {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             ChannelCreateFlowGroupByFilesRequest req = new ChannelCreateFlowGroupByFilesRequest();
 
-            // 渠道应用相关信息
+            // 渠道应用相关信息。 
+	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
             req.setAgent(agent);
             req.setFlowGroupName(flowGroupName);
 
@@ -38,6 +40,8 @@ public class ChannelCreateFlowGroupByFiles {
             // 签署文件资源Id列表，目前仅支持单个文件
             flowFileInfo.setFileIds(new String[]{fileId});
 
+            // 每个子合同的发起所需的信息，数量限制2-100
+	        // 详细参考 https://cloud.tencent.com/document/product/1420/61534
             req.setFlowFileInfos(new FlowFileInfo[]{flowFileInfo});
             
             // 返回的resp是一个ChannelCreateFlowGroupByFilesResponse的实例，与请求对象对应
