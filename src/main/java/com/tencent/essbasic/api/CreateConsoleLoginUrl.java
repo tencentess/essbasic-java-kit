@@ -8,7 +8,7 @@ import com.tencentcloudapi.essbasic.v20210526.models.CreateConsoleLoginUrlReques
 import com.tencentcloudapi.essbasic.v20210526.models.CreateConsoleLoginUrlResponse;
 
 /**
- * 用于创建渠道子客企业控制台Web/移动登录链接。登录链接是子客控制台的唯一入口。
+ * 用于创建子客企业控制台Web/移动登录链接。登录链接是子客控制台的唯一入口。
  * 若子客企业未激活，会进入企业激活流程，首次参与激活流程的经办人会成为超管。
  * （若企业激活过程中填写信息有误，需要重置激活流程，可以换一个经办人OpenId获取新的链接进入。）
  * 若子客企业已激活，使用了新的经办人OpenId进入，则会进入经办人的实名流程。
@@ -20,8 +20,8 @@ public class CreateConsoleLoginUrl {
     /**
      * 创建电子签控制台登录链接
      *
-     * @param agent                 渠道应用相关信息
-     * @param proxyOrganizationName 渠道侧合作企业名称
+     * @param agent                 第三方平台应用相关信息
+     * @param proxyOrganizationName 子客企业名称
      * @return CreateConsoleLoginUrlResponse
      */
     public static CreateConsoleLoginUrlResponse createConsoleLoginUrl(Agent agent, String proxyOrganizationName) {
@@ -35,7 +35,7 @@ public class CreateConsoleLoginUrl {
 	        // 此接口Agent.AppId、Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
             agent.setProxyAppId(""); //不需要此参数
             req.setAgent(agent);
-            // 渠道侧合作企业名称，最大长度64个字符
+            // 子客企业名称，最大长度64个字符
             req.setProxyOrganizationName(proxyOrganizationName);
 
             // 其他参数根据业务需要参考接口文档

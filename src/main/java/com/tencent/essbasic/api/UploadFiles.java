@@ -24,7 +24,7 @@ public class UploadFiles {
     /**
      * 用于生成pdf资源编号
      *
-     * @param agent      渠道应用相关信息
+     * @param agent      第三方平台应用相关信息
      * @param uploadFile 文件内容
      * @return UploadFilesResponse
      */

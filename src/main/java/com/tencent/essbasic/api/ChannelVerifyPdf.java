@@ -15,7 +15,7 @@ public class ChannelVerifyPdf {
     /**
      * 合同文件验签
      *
-     * @param agent  渠道应用相关信息
+     * @param agent  第三方平台应用相关信息
      * @param flowId 合同Id，流程Id
      * @return ChannelVerifyPdfResponse
      */
@@ -26,7 +26,7 @@ public class ChannelVerifyPdf {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             ChannelVerifyPdfRequest req = new ChannelVerifyPdfRequest();
 
-            // 渠道应用相关信息。 
+            // 第三方平台应用相关信息。 
 	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
             req.setAgent(agent);
             // 合同Id，流程Id

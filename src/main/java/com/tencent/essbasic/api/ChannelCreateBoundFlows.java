@@ -8,14 +8,14 @@ import com.tencentcloudapi.essbasic.v20210526.models.ChannelCreateBoundFlowsRequ
 import com.tencentcloudapi.essbasic.v20210526.models.ChannelCreateBoundFlowsResponse;
 
 /**
- * 用于渠道子客领取合同，经办人需要有相应的角色，领取后的合同不能重复领取。
+ * 用于子客领取合同，经办人需要有相应的角色，领取后的合同不能重复领取。
  * 详细参考 https://cloud.tencent.com/document/api/1420/83118
  */
 public class ChannelCreateBoundFlows {
     /**
-     * 此接口（ChannelCreateBoundFlows）用于渠道子客领取合同，经办人需要有相应的角色，领取后的合同不能重复领取。
+     * 此接口（ChannelCreateBoundFlows）用于子客领取合同，经办人需要有相应的角色，领取后的合同不能重复领取。
      *
-     * @param agent   渠道应用相关信息
+     * @param agent   第三方平台应用相关信息
      * @param flowIds 领取的合同id列表
      * @return ChannelCreateBoundFlowsResponse
      */

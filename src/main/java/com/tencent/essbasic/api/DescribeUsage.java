@@ -8,15 +8,15 @@ import com.tencentcloudapi.essbasic.v20210526.models.DescribeUsageRequest;
 import com.tencentcloudapi.essbasic.v20210526.models.DescribeUsageResponse;
 
 /**
- * 此接口（DescribeUsage）用于获取渠道所有合作企业流量消耗情况。
+ * 此接口（DescribeUsage）用于获取平台企业所有合作企业流量消耗情况。
  * 注: 此接口每日限频2次，若要扩大限制次数,请提前与客服经理或邮件至e-contract@tencent.com进行联系。
  * 详细参考 https://cloud.tencent.com/document/api/1420/61520
  */
 public class DescribeUsage {
     /**
-     * 获取渠道所有合作企业流量消耗情况
+     * 获取平台企业所有合作企业流量消耗情况
      *
-     * @param agent     渠道应用相关信息
+     * @param agent     第三方平台应用相关信息
      * @param StartDate 资源所对应的签署流程Id
      * @param EndDate   资源所对应的签署流程Id
      * @return DescribeUsageResponse

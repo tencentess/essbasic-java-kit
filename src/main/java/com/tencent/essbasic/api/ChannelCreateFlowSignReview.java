@@ -17,7 +17,7 @@ public class ChannelCreateFlowSignReview {
     /**
      * 提交企业签署流程审批结果
      *
-     * @param agent      渠道应用相关信息
+     * @param agent      第三方平台应用相关信息
      * @param flowId     资源所对应的签署流程Id
      * @param ReviewType 企业内部审核结果  PASS: 通过，REJECT: 拒绝
      * @return ChannelCreateFlowSignReviewResponse
@@ -29,7 +29,7 @@ public class ChannelCreateFlowSignReview {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             ChannelCreateFlowSignReviewRequest req = new ChannelCreateFlowSignReviewRequest();
 
-            // 渠道应用相关信息。 
+            // 第三方平台应用相关信息。 
 	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
             req.setAgent(agent);
             // 签署流程编号

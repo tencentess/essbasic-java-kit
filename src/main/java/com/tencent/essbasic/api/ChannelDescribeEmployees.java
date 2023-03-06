@@ -16,7 +16,7 @@ public class ChannelDescribeEmployees {
     /**
      * 查询企业员工列表
      *
-     * @param agent   渠道应用相关信息
+     * @param agent   第三方平台应用相关信息
      * @param filters 查询过滤实名用户
      * @param limit   返回最大数量，最大为20
      * @param offset  偏移量，默认为0，最大为20000
@@ -32,7 +32,7 @@ public class ChannelDescribeEmployees {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             ChannelDescribeEmployeesRequest req = new ChannelDescribeEmployeesRequest();
 
-            // 渠道应用相关信息。 
+            // 第三方平台应用相关信息。 
 	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
             req.setAgent(agent);
             // 查询过滤实名用户，Key为Status，Values为["IsVerified"]

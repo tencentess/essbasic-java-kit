@@ -19,7 +19,7 @@ public class CreateFlowsByTemplates {
     /**
      * 用于使用多个模板批量创建签署流程
      *
-     * @param agent     渠道应用相关信息
+     * @param agent     第三方平台应用相关信息
      * @param flowInfos 多个合同（签署流程）信息
      * @return CreateFlowsByTemplatesResponse
      */
@@ -30,7 +30,7 @@ public class CreateFlowsByTemplates {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             CreateFlowsByTemplatesRequest req = new CreateFlowsByTemplatesRequest();
 
-            // 渠道应用相关信息。 
+            // 第三方平台应用相关信息。 
 	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
             req.setAgent(agent);
             // 多个合同（签署流程）信息，最多支持20个

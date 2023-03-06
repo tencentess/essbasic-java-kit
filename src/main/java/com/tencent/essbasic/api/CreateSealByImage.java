@@ -10,13 +10,13 @@ import com.tencentcloudapi.essbasic.v20210526.models.CreateSealByImageResponse;
 import static com.tencent.essbasic.common.CreateFlowUtils.convertImageFileToBase64;
 
 /**
- * 渠道通过图片为子客代创建印章，图片最大5MB
+ * 平台企业通过图片为子客代创建印章，图片最大5MB
  */
 public class CreateSealByImage {
     /**
-     * 渠道通过图片为子客代创建印章，图片最大5m；此接口不可直接使用，需要运营申请
+     * 平台企业通过图片为子客代创建印章，图片最大5m；此接口不可直接使用，需要运营申请
      *
-     * @param agent     渠道应用相关信息
+     * @param agent     第三方平台应用相关信息
      * @param sealName  印章名称，最大长度不超过30字符
      * @param sealImage 印章图片base64
      * @return CreateSealByImageResponse
@@ -28,7 +28,7 @@ public class CreateSealByImage {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             CreateSealByImageRequest req = new CreateSealByImageRequest();
 
-            // 渠道应用相关信息
+            // 第三方平台应用相关信息
             req.setAgent(agent);
             // 印章名称，最大长度不超过30字符
             req.setSealName(sealName);

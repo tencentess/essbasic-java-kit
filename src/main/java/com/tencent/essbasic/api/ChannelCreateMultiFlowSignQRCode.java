@@ -18,7 +18,7 @@ public class ChannelCreateMultiFlowSignQRCode {
     /**
      * 创建一码多扫流程签署二维码
      *
-     * @param agent      渠道应用相关信息
+     * @param agent      第三方平台应用相关信息
      * @param templateId 模板ID
      * @param flowName   签署流程名称
      * @return ChannelCancelMultiFlowSignQRCodeResponse
@@ -31,7 +31,7 @@ public class ChannelCreateMultiFlowSignQRCode {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             ChannelCreateMultiFlowSignQRCodeRequest req = new ChannelCreateMultiFlowSignQRCodeRequest();
 
-            // 渠道应用相关信息。
+            // 第三方平台应用相关信息。
 	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
             req.setAgent(agent);
             // 模板ID
@@ -53,7 +53,7 @@ public class ChannelCreateMultiFlowSignQRCode {
      */
     public static void main(String[] args) {
         try {
-            // 渠道应用相关信息
+            // 第三方平台应用相关信息
             Agent agent = CreateFlowUtils.setAgent();
             // 模板Id
             String templateId = "****************";

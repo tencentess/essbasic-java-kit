@@ -8,7 +8,7 @@ import com.tencentcloudapi.essbasic.v20210526.models.ChannelBatchCancelFlowsRequ
 import com.tencentcloudapi.essbasic.v20210526.models.ChannelBatchCancelFlowsResponse;
 
 /**
- * 电子签渠道版-根据签署流程id批量撤销合同
+ * 电子签第三方应用集成-根据签署流程id批量撤销合同
  */
 public class ChannelBatchCancelFlows {
     /**
@@ -18,7 +18,7 @@ public class ChannelBatchCancelFlows {
      * 能撤回合同的只能是合同的发起人或者发起企业的超管、法人
      * 详细参考 https://cloud.tencent.com/document/api/1420/80391
      *
-     * @param agent   渠道应用相关信息
+     * @param agent   第三方平台应用相关信息
      * @param flowIds 签署流程Id数组，最多100个，超过100不处理
      * @return ChannelBatchCancelFlowsResponse
      */
@@ -29,7 +29,7 @@ public class ChannelBatchCancelFlows {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             ChannelBatchCancelFlowsRequest req = new ChannelBatchCancelFlowsRequest();
 
-            // 渠道应用相关信息。 
+            // 第三方平台应用相关信息。 
 	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
             req.setAgent(agent);
             // 签署流程Id数组，最多100个，超过100不处理

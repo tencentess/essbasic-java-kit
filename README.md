@@ -1,7 +1,7 @@
-# 腾讯电子签渠道版API接入工具包
+# 腾讯电子签第三方应用集成API接入工具包
 
 ## 项目说明
-项目通过maven引入了腾讯云sdk，补充了调用电子签渠道版API所需要的内容，并提供了调用的样例。使用前请先在项目中导入腾讯云sdk。
+项目通过maven引入了腾讯云sdk，补充了调用电子签第三方应用集成API所需要的内容，并提供了调用的样例。使用前请先在项目中导入腾讯云sdk。
 
 ```
 <dependency>
@@ -66,18 +66,18 @@ export PATH=${PATH}:${MAVEN_HOME}/bin
 
 ## 目录文件说明
 ### com.tencent.essbasic.api
-api目录是对电子签渠道版所有API的简单封装，以及调用的Example（可以直接运行main函数进行测试）。
+api目录是对电子签第三方应用集成所有API的简单封装，以及调用的Example（可以直接运行main函数进行测试）。
 如果需要API更加高级的功能，需要结合业务修改api的封装。
 
 注意部分参数可能与用户配置的不一致，需要调整
 
 ### com.tencent.essbasic.byfile
-byfile目录是电子签渠道版的核心场景之一：通过文件发起的快速上手样例。
+byfile目录是电子签第三方应用集成的核心场景之一：通过文件发起的快速上手样例。
 **ByFileQuickStart一键使用文件发起流程：上传文件获取fileId -> 创建签署流程 -> 获取签署链接**
 业务方可以结合自己的业务调整，用于正式对接。
 
 ### com.tencent.essbasic.bytemplate
-bytemplate目录是电子签渠道版的核心场景之一 ：通过模版发起的快速上手样例。
+bytemplate目录是电子签第三方应用集成的核心场景之一 ：通过模板发起的快速上手样例。
 **ByTemplateQuickStart一键使用模板id发起流程:创建流程 -> 创建电子文档 -> 等待文档异步合成 -> 开启流程 -> 获取签署链接**
 业务方可以结合自己的业务调整，用于正式对接。
 
@@ -85,10 +85,10 @@ bytemplate目录是电子签渠道版的核心场景之一 ：通过模版发起
 用于构造默认电子签客户端调用实例， 以及一些公共参数的组装
 
 ### com.tencent.essbasic.config
-里面定义调用电子签渠道版API需要的一些核心参数。
+里面定义调用电子签第三方应用集成API需要的一些核心参数。
 
 ### resources
 blank.pdf是一个空白的pdf用于快速发起合同的测试。
 
-## 电子签渠道版官网入口
-[腾讯电子签渠道版](https://cloud.tencent.com/document/product/1420/61534)
+## 电子签第三方应用集成官网入口
+[腾讯电子签第三方应用集成](https://cloud.tencent.com/document/api/1420/61534)

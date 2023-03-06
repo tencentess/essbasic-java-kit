@@ -6,7 +6,7 @@ import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
 import com.tencentcloudapi.essbasic.v20210526.models.*;
 
 /**
- * 用于渠道版通过文件创建签署流程。
+ * 用于第三方应用集成通过文件创建签署流程。
  * 注意事项：该接口需要依赖“多文件上传”接口生成pdf资源编号（FileIds）进行使用。
  * 此接口静默签能力不可直接使用，需要运营申请
  * 详细参考 https://cloud.tencent.com/document/api/1420/73068
@@ -16,7 +16,7 @@ public class ChannelCreateFlowByFiles {
     /**
      * 通过上传后的pdf资源编号来创建待签署的合同流程
      *
-     * @param agent             渠道应用相关信息
+     * @param agent             第三方平台应用相关信息
      * @param flowApproverInfos 签署流程签约方列表
      * @param flowName          签署流程名称
      * @param fileId            签署文件资源Id
@@ -30,7 +30,7 @@ public class ChannelCreateFlowByFiles {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             ChannelCreateFlowByFilesRequest req = new ChannelCreateFlowByFilesRequest();
 
-            // 渠道应用相关信息。 
+            // 第三方平台应用相关信息。 
 	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
             req.setAgent(agent);
             // 签署流程签约方列表，最多不超过5个参与方
@@ -63,7 +63,7 @@ public class ChannelCreateFlowByFiles {
             // 签署流程名称,最大长度200个字符
             String flowName = "我的第一份文件合同";
 
-            // 渠道应用相关信息
+            // 第三方平台应用相关信息
             Agent agent = CreateFlowUtils.setAgent();
 
             // 签署方参与信息

@@ -16,7 +16,7 @@ public class DescribeChannelFlowEvidenceReport {
     /**
      * 查询出证报告
      *
-     * @param agent    渠道应用相关信息
+     * @param agent    第三方平台应用相关信息
      * @param reportId 出证报告编号
      * @return DescribeChannelFlowEvidenceReportResponse
      */
@@ -27,7 +27,7 @@ public class DescribeChannelFlowEvidenceReport {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             DescribeChannelFlowEvidenceReportRequest req = new DescribeChannelFlowEvidenceReportRequest();
 
-            // 渠道应用相关信息。 
+            // 第三方平台应用相关信息。 
 	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
             req.setAgent(agent);
             // 出证报告编号

@@ -10,16 +10,16 @@ import static com.tencent.essbasic.common.CreateFlowUtils.initClient;
 import static com.tencent.essbasic.common.CreateFlowUtils.setAgent;
 
 /**
- * 此用于针对渠道模板库中的模板对子客企业可见性的查询和设置，不会直接分配渠道模板给子客企业。
+ * 此用于针对平台企业模板库中的模板对子客企业可见性的查询和设置，不会直接分配平台企业模板给子客企业。
  * 1、OperateType=select时：
- * 查询渠道模板库
+ * 查询平台企业模板库
  * 2、OperateType=update或者delete时：
  * 对子客企业进行模板库中模板可见性的修改、删除操作。
  * 详细参考 https://cloud.tencent.com/document/api/1420/66367
  */
 public class OperateChannelTemplate {
     /**
-     * @param agent      渠道应用相关信息
+     * @param agent      第三方平台应用相关信息
      * @param TemplateId 模板唯一标识
      * @return OperateChannelTemplateResponse
      */
@@ -30,10 +30,10 @@ public class OperateChannelTemplate {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             OperateChannelTemplateRequest req = new OperateChannelTemplateRequest();
 
-            // 渠道应用相关信息。 
+            // 第三方平台应用相关信息。 
 	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
             req.setAgent(agent);
-            // 渠道方模板库模板唯一标识
+            // 平台企业模板库模板唯一标识
             req.setTemplateId(TemplateId);
             // 操作类型，查询:"SELECT"，删除:"DELETE"，更新:"UPDATE"
             req.setOperateType("SELECT");

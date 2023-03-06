@@ -13,7 +13,7 @@ public class ChannelCreateFlowGroupByFiles {
     /**
      * 用于通过多文件创建合同组签署流程。
      *
-     * @param agent             渠道应用相关信息
+     * @param agent             第三方平台应用相关信息
      * @param flowApproverInfos 签署流程签约方列表
      * @param flowName          签署流程名称
      * @param fileId            签署文件资源Id
@@ -27,7 +27,7 @@ public class ChannelCreateFlowGroupByFiles {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             ChannelCreateFlowGroupByFilesRequest req = new ChannelCreateFlowGroupByFilesRequest();
 
-            // 渠道应用相关信息。 
+            // 第三方平台应用相关信息。 
 	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
             req.setAgent(agent);
             req.setFlowGroupName(flowGroupName);
@@ -65,7 +65,7 @@ public class ChannelCreateFlowGroupByFiles {
 
             String flowGroupName = "第一个合同组";
 
-            // 渠道应用相关信息
+            // 第三方平台应用相关信息
             Agent agent = CreateFlowUtils.setAgent();
 
             // 签署方参与信息

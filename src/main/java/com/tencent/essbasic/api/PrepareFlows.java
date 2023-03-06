@@ -17,7 +17,7 @@ public class PrepareFlows {
      * 用户通过该接口进入签署流程发起的确认页面，进行发起信息二次确认， 如果确认则进行正常发起。
      * 目前该接口只支持B2C，不建议使用，将会废弃。
      *
-     * @param agent     渠道应用相关信息
+     * @param agent     第三方平台应用相关信息
      * @param jumpUrl   操作完成后的跳转地址，最大长度200
      * @param flowInfos 多个合同（签署流程）信息，最大支持20个签署流程。
      * @return PrepareFlowsResponse
@@ -29,7 +29,7 @@ public class PrepareFlows {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             PrepareFlowsRequest req = new PrepareFlowsRequest();
 
-            // 渠道应用相关信息。 
+            // 第三方平台应用相关信息。 
 	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
             req.setAgent(agent);
             // 操作完成后的跳转地址，最大长度200

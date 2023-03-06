@@ -16,7 +16,7 @@ public class DescribeResourceUrlsByFlows {
     /**
      * 根据签署流程信息批量获取资源下载链接
      *
-     * @param agent   渠道应用相关信息
+     * @param agent   第三方平台应用相关信息
      * @param flowIds 资源所对应的签署流程Id
      * @return DescribeResourceUrlsByFlowsResponse
      */
@@ -27,7 +27,7 @@ public class DescribeResourceUrlsByFlows {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             DescribeResourceUrlsByFlowsRequest req = new DescribeResourceUrlsByFlowsRequest();
 
-            // 渠道应用相关信息。
+            // 第三方平台应用相关信息。
 	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
             req.setAgent(agent);
             // 查询资源所对应的签署流程Id，最多支持50个
