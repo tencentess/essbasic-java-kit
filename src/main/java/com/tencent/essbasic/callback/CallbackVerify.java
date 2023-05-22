@@ -3,7 +3,7 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
- * CallbackVerify
+ * 回调消息验证签名
  */
 public class CallbackVerify {
 
