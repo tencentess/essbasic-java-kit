@@ -31,7 +31,7 @@ public class OperateChannelTemplate {
             OperateChannelTemplateRequest req = new OperateChannelTemplateRequest();
 
             // 第三方平台应用相关信息。 
-	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
             req.setAgent(agent);
             // 平台企业模板库模板唯一标识
             req.setTemplateId(TemplateId);

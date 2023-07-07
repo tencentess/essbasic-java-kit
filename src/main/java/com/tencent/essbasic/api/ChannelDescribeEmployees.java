@@ -33,7 +33,7 @@ public class ChannelDescribeEmployees {
             ChannelDescribeEmployeesRequest req = new ChannelDescribeEmployeesRequest();
 
             // 第三方平台应用相关信息。 
-	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
             req.setAgent(agent);
             // 查询过滤实名用户，Key为Status，Values为["IsVerified"]
             // 根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]

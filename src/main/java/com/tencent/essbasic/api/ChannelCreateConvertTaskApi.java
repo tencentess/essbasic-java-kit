@@ -29,7 +29,7 @@ public class ChannelCreateConvertTaskApi {
             ChannelCreateConvertTaskApiRequest req = new ChannelCreateConvertTaskApiRequest();
 
             // 第三方平台应用相关信息。 
-	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
             req.setAgent(agent);
             // 资源类型 取值范围doc,docx,html,xls,xlsx之一
             req.setResourceType(ResourceType);

@@ -31,7 +31,7 @@ public class ChannelCreateReleaseFlow {
             ChannelCreateReleaseFlowRequest req = new ChannelCreateReleaseFlowRequest();
 
             // 第三方平台应用相关信息。 
-	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
             req.setAgent(agent);
             // 待解除的流程编号（即原流程的编号）
             req.setNeedRelievedFlowId(needRelievedFlowId);

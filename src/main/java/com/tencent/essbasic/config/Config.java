@@ -15,6 +15,7 @@ public class Config {
 	// https://cloud.tencent.com/document/product/1323/83102#.E6.B8.A0.E9.81.93.E7.89.88
     public static final String AppId = "****************";
 
+    // 非必需
     // 在子客企业开通电子签后，会生成唯一的子客应用Id（ProxyAppId）用于代理调用时的鉴权
 	// 在回调与跳转-电子签开通通知里会返回此数据ProxyAppId
     public static final String ProxyAppId = "****************";

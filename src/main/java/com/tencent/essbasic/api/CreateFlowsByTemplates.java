@@ -31,7 +31,7 @@ public class CreateFlowsByTemplates {
             CreateFlowsByTemplatesRequest req = new CreateFlowsByTemplatesRequest();
 
             // 第三方平台应用相关信息。 
-	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
             req.setAgent(agent);
             // 多个合同（签署流程）信息，最多支持20个
             // 详细参考 https://cloud.tencent.com/document/api/1420/61525#FlowInfo

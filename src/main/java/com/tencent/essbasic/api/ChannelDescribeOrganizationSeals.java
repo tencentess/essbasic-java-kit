@@ -40,7 +40,7 @@ public class ChannelDescribeOrganizationSeals {
             ChannelDescribeOrganizationSealsRequest req = new ChannelDescribeOrganizationSealsRequest();
 
             // 第三方平台应用相关信息。 
-	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
             req.setAgent(agent);
             // 印章id（没有输入返回所有）
             req.setSealId(sealId);

@@ -29,7 +29,7 @@ public class GetDownloadFlowUrl {
             GetDownloadFlowUrlRequest req = new GetDownloadFlowUrlRequest();
 
             // 第三方平台应用相关信息。 
-	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
             req.setAgent(agent);
             // 文件夹数组，签署流程总数不能超过50个，一个文件夹下，不能超过20个签署流程
             req.setDownLoadFlows(DownloadFlowInfos);

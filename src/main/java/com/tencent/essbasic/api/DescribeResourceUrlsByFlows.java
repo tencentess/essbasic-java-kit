@@ -28,7 +28,7 @@ public class DescribeResourceUrlsByFlows {
             DescribeResourceUrlsByFlowsRequest req = new DescribeResourceUrlsByFlowsRequest();
 
             // 第三方平台应用相关信息。
-	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
             req.setAgent(agent);
             // 查询资源所对应的签署流程Id，最多支持50个
             req.setFlowIds(flowIds);

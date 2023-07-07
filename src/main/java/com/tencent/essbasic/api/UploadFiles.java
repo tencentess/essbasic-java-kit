@@ -43,7 +43,7 @@ public class UploadFiles {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             UploadFilesRequest req = new UploadFilesRequest();
 
-            // 应用相关信息，appid 和proxyappid 必填
+            // 应用相关信息，AppId 和 ProxyOrganizationOpenId 必填
             req.setAgent(agent);
             // 上传文件内容数组，最多支持20个文件
             req.setFileInfos(uploadFile);
