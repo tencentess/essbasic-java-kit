@@ -7,18 +7,8 @@ import com.tencentcloudapi.essbasic.v20210526.models.Agent;
 import com.tencentcloudapi.essbasic.v20210526.models.ChannelGetTaskResultApiRequest;
 import com.tencentcloudapi.essbasic.v20210526.models.ChannelGetTaskResultApiResponse;
 
-/**
- * 第三方应用集成查询转换任务状态
- * 详细参考 https://cloud.tencent.com/document/api/1420/78773
- */
 public class ChannelGetTaskResultApi {
-    /**
-     * 第三方应用集成查询转换任务状态
-     *
-     * @param agent  第三方平台应用相关信息
-     * @param TaskId 任务Id，通过ChannelCreateConvertTaskApi接口获得
-     * @return ChannelGetTaskResultApiResponse
-     */
+
     public static ChannelGetTaskResultApiResponse channelGetTaskResultApi(String TaskId, Agent agent) {
         try {
             // 实例化一个client
@@ -26,10 +16,8 @@ public class ChannelGetTaskResultApi {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             ChannelGetTaskResultApiRequest req = new ChannelGetTaskResultApiRequest();
 
-            // 第三方平台应用相关信息。 
-	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
             req.setAgent(agent);
-            // 任务Id，通过ChannelCreateConvertTaskApi接口获得
+
             req.setTaskId(TaskId);
 
             // 返回的resp是一个ChannelGetTaskResultApiResponse的实例，与请求对象对应
@@ -45,9 +33,9 @@ public class ChannelGetTaskResultApi {
      */
     public static void main(String[] args) {
         try {
-            // 设置agent参数
+
             Agent agent = CreateFlowUtils.setAgent();
-            // 任务Id，通过ChannelCreateConvertTaskApi接口获得
+
             String TaskId = "*********************";
             ChannelGetTaskResultApiResponse channelGetTaskResultApiRes = ChannelGetTaskResultApi.channelGetTaskResultApi(TaskId, agent);
             assert channelGetTaskResultApiRes != null;

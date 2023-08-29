@@ -8,21 +8,8 @@ import com.tencentcloudapi.essbasic.v20210526.models.*;
 
 import java.util.Arrays;
 
-/**
- * 用于使用多个模板批量创建签署流程。当前可批量发起合同（签署流程）数量最大为20个。
- * 如若在模板中配置了动态表格, 上传的附件必须为A4大小
- * 合同发起人必须在电子签已经进行实名。
- * 详细参考 https://cloud.tencent.com/document/api/1420/61523
- */
-
 public class CreateFlowsByTemplates {
-    /**
-     * 用于使用多个模板批量创建签署流程
-     *
-     * @param agent     第三方平台应用相关信息
-     * @param flowInfos 多个合同（签署流程）信息
-     * @return CreateFlowsByTemplatesResponse
-     */
+
     public static CreateFlowsByTemplatesResponse createFlowsByTemplates(Agent agent, FlowInfo[] flowInfos) {
         try {
             // 实例化一个client
@@ -30,12 +17,8 @@ public class CreateFlowsByTemplates {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             CreateFlowsByTemplatesRequest req = new CreateFlowsByTemplatesRequest();
 
-            // 第三方平台应用相关信息。 
-	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
             req.setAgent(agent);
-            // 多个合同（签署流程）信息，最多支持20个
-            // 详细参考 https://cloud.tencent.com/document/api/1420/61525#FlowInfo
-            // 签署人 https://cloud.tencent.com/document/api/1420/61525#FlowApproverInfo
+
             req.setFlowInfos(flowInfos);
 
             // 返回的resp是一个CreateFlowsByTemplatesResponse的实例，与请求对象对应
@@ -51,11 +34,9 @@ public class CreateFlowsByTemplates {
      */
     public static void main(String[] args) {
         try {
-            // 模板Id
             String TemplateId = "***************";
             String FlowName = "我的第一份合同";
 
-            // 设置agent参数
             Agent agent = CreateFlowUtils.setAgent();
             // 通过DescribeTemplates接口获得的RecipientId
             DescribeTemplatesResponse describeTemplatesResponse = DescribeTemplates.describeTemplates(agent, TemplateId);

@@ -5,18 +5,9 @@ import com.tencentcloudapi.essbasic.v20210526.models.Agent;
 import com.tencentcloudapi.essbasic.v20210526.models.DescribeResourceUrlsByFlowsResponse;
 import com.tencentcloudapi.essbasic.v20210526.models.UserInfo;
 
-/**
- * 查询文件下载URL 对于DescribeResourceUrlsByFlows的封装
- * 适用场景：通过传参合同流程编号，下载对应的合同PDF文件流到本地。
- */
 
 public class DescribeFileUrls {
-    /**
-     * 下载对应的合同PDF文件流到本地
-     *
-     * @param flowId 资源所对应的签署流程Id
-     * @return describeFileUrls
-     */
+
     public static String describeFileUrls(String flowId) {
 
         // 设置agent参数
@@ -42,7 +33,7 @@ public class DescribeFileUrls {
      */
     public static void main(String[] args) {
         try {
-            // 资源所对应的签署流程Id
+
             String flowId = "*************";
 
             String url = describeFileUrls(flowId);

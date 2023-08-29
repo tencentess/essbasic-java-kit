@@ -6,13 +6,11 @@ package com.tencent.essbasic.config;
 public class Config {
     // SecretId SecretKey 调用云API需要使用的密钥对，是平台企业的密钥对（子客企业无需准备此参数）。
     // 联调/生产环境都是可以由平台企业电子签控制台应用集成模块自主获取。
-    // https://cloud.tencent.com/document/product/1323/83102#.E6.B8.A0.E9.81.93.E7.89.88
     public static final String SecretId = "****************";
     public static final String SecretKey = "****************";
 
     // 应用的唯一标识，对应通用参数AppId。不同的业务系统可以采用不同的AppId，
     // 不同AppId下的数据是隔离的。联调/生产环境都是可以由控制台开发者中心-应用集成自主生成。
-    // https://cloud.tencent.com/document/product/1323/83102#.E6.B8.A0.E9.81.93.E7.89.88
     public static final String AppId = "****************";
 
     // 非必需

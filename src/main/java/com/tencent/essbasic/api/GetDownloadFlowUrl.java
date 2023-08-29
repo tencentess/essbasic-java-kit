@@ -8,19 +8,8 @@ import com.tencentcloudapi.essbasic.v20210526.models.DownloadFlowInfo;
 import com.tencentcloudapi.essbasic.v20210526.models.GetDownloadFlowUrlRequest;
 import com.tencentcloudapi.essbasic.v20210526.models.GetDownloadFlowUrlResponse;
 
-/**
- * 此接口（GetDownloadFlowUrl）用于创建电子签批量下载地址，让合作企业进入控制台直接下载，支持客户合同（流程）按照自定义文件夹形式 分类下载。
- * 当前接口限制最多合同（流程）50个.
- * 详细参考 https://cloud.tencent.com/document/api/1420/66368
- */
 public class GetDownloadFlowUrl {
-    /**
-     * 创建电子签批量下载地址，让合作企业进入控制台直接下载
-     *
-     * @param agent             第三方平台应用相关信息
-     * @param DownloadFlowInfos 文件夹数组，签署流程总数不能超过50个，一个文件夹下，不能超过20个签署流程
-     * @return GetDownloadFlowUrlResponse
-     */
+
     public static GetDownloadFlowUrlResponse getDownloadFlowUrl(DownloadFlowInfo[] DownloadFlowInfos, Agent agent) {
         try {
             // 实例化一个client
@@ -28,10 +17,8 @@ public class GetDownloadFlowUrl {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             GetDownloadFlowUrlRequest req = new GetDownloadFlowUrlRequest();
 
-            // 第三方平台应用相关信息。 
-	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
             req.setAgent(agent);
-            // 文件夹数组，签署流程总数不能超过50个，一个文件夹下，不能超过20个签署流程
+
             req.setDownLoadFlows(DownloadFlowInfos);
 
             // 返回的resp是一个GetDownloadFlowUrlResponse的实例，与请求对象对应
@@ -47,9 +34,9 @@ public class GetDownloadFlowUrl {
      */
     public static void main(String[] args) {
         try {
-            // 设置agent参数
+
             Agent agent = CreateFlowUtils.setAgent();
-            // 需要下载的流程Id
+
             String[] flowIds = new String[]{"*********************"};
             String FileName = "文件夹1";
 

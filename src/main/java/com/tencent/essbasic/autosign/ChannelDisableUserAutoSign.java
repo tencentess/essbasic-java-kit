@@ -8,16 +8,6 @@ import com.tencentcloudapi.essbasic.v20210526.models.ChannelDisableUserAutoSignR
 import com.tencentcloudapi.essbasic.v20210526.models.UserThreeFactor;
 
 
-/**
- * 关闭个人自动签功能
- * 企业方可以通过此接口关闭个人的自动签功能
- * <p>
- * 接口名称
- * ChannelDisableUserAutoSign
- * <p>
- * 接口文档
- * https://qian.tencent.com/developers/partnerApis/enterpriseUsers/ChannelDisableUserAutoSign
- */
 public class ChannelDisableUserAutoSign {
 
     public static void main(String[] args) {
@@ -38,13 +28,6 @@ public class ChannelDisableUserAutoSign {
         }
     }
 
-    /**
-     * 构造请求基本参数
-     *
-     * @param name         姓名
-     * @param idCardNumber 身份证号码
-     * @return ChannelDisableUserAutoSignRequest 请求体
-     */
     public static ChannelDisableUserAutoSignRequest prepareChannelDisableUserAutoSignRequest(
             String name, String idCardNumber) {
         ChannelDisableUserAutoSignRequest req = new ChannelDisableUserAutoSignRequest();

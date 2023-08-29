@@ -5,14 +5,6 @@ import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
 import com.tencentcloudapi.essbasic.v20210526.models.*;
 
-/**
- * 创建导入个人印章
- * 此接口（ChannelCreatePreparedPersonalEsign）用于创建导入个人印章
- * 此接口也可开通个人自动签署（处方单场景专用，使用此接口请与客户经理确认）
- * <p>
- * 接口文档
- * https://qian.tencent.com/developers/partnerApis/seals/ChannelCreatePreparedPersonalEsign
- */
 public class ChannelCreatePreparedPersonalEsign {
     public static void main(String[] args) {
 
@@ -33,15 +25,6 @@ public class ChannelCreatePreparedPersonalEsign {
         }
     }
 
-    /**
-     * 构造请求
-     *
-     * @param name          姓名
-     * @param idCardNumber  身份证号
-     * @param sealImgBase64 印章图片base64
-     * @param sealName      印章名称
-     * @return ChannelCreatePreparedPersonalEsignRequest
-     */
     public static ChannelCreatePreparedPersonalEsignRequest prepareChannelCancelUserAutoSignEnableUrl(
             String name, String idCardNumber, String sealImgBase64, String sealName) {
         ChannelCreatePreparedPersonalEsignRequest req = new ChannelCreatePreparedPersonalEsignRequest();
@@ -52,9 +35,6 @@ public class ChannelCreatePreparedPersonalEsign {
         req.setIdCardNumber(idCardNumber);
         req.setSealImage(sealImgBase64);
         req.setSealName(sealName);
-        // 如果需要开通个人自动签署, 要设置以下参数, 该功能需联系运营工作人员开通后使用
-//        req.setMobile("手机号");
-//        req.setEnableAutoSign(true);
         return req;
     }
 }

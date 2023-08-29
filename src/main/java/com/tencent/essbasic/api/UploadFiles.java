@@ -14,20 +14,8 @@ import com.tencentcloudapi.essbasic.v20210526.models.UploadFilesResponse;
 import static com.tencent.essbasic.common.CreateFlowUtils.convertImageFileToBase64;
 import static com.tencent.essbasic.common.CreateFlowUtils.setAgent;
 
-/**
- * UploadFiles 用于生成pdf资源编号（FileIds）来配合“用PDF创建流程”接口使用，使用场景可详见“用PDF创建流程”接口说明。
- * 调用时需要设置Domain, 正式环境为 file.ess.tencent.cn
- * 测试环境为 https://file.test.ess.tencent.cn
- * 详细参考 https://cloud.tencent.com/document/api/1420/71479
- */
 public class UploadFiles {
-    /**
-     * 用于生成pdf资源编号
-     *
-     * @param agent      第三方平台应用相关信息
-     * @param uploadFile 文件内容
-     * @return UploadFilesResponse
-     */
+
     public static UploadFilesResponse uploadFiles(Agent agent, UploadFile[] uploadFile) {
         try {
             // 实例化一个client
@@ -43,13 +31,11 @@ public class UploadFiles {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             UploadFilesRequest req = new UploadFilesRequest();
 
-            // 应用相关信息，AppId 和 ProxyOrganizationOpenId 必填
+
             req.setAgent(agent);
-            // 上传文件内容数组，最多支持20个文件
+
             req.setFileInfos(uploadFile);
-            // 文件对应业务类型
-	        // 1. TEMPLATE - 模板； 文件类型：.pdf/.doc/.docx/.html
-	        // 2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html
+
             req.setBusinessType("DOCUMENT");
 
             // 返回的resp是一个UploadFilesResponse的实例，与请求对象对应
@@ -65,14 +51,14 @@ public class UploadFiles {
      */
     public static void main(String[] args) {
         try {
-            // 设置agent参数
+
             Agent agent = setAgent();
             String filePath = "blank.pdf";
             String fileBase64 = convertImageFileToBase64(filePath);
-            // 设置uploadFile参数,这里可以修改传入数量
+
             UploadFile[] uploadFiles = new UploadFile[]{new UploadFile()};
             uploadFiles[0].setFileBody(fileBase64);
-            // 上传文件获取fileId
+
             UploadFilesResponse uploadRes = UploadFiles.uploadFiles(agent, uploadFiles);
             assert uploadRes != null;
             System.out.println(UploadFilesResponse.toJsonString(uploadRes));

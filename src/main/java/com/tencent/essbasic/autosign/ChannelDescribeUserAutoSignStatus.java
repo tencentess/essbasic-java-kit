@@ -7,16 +7,6 @@ import com.tencentcloudapi.essbasic.v20210526.models.ChannelDescribeUserAutoSign
 import com.tencentcloudapi.essbasic.v20210526.models.ChannelDescribeUserAutoSignStatusResponse;
 import com.tencentcloudapi.essbasic.v20210526.models.UserThreeFactor;
 
-/**
- * 查询个人用户开通自动签状态
- * 企业方可以通过此接口查询个人用户自动签开启状态
- * <p>
- * 接口名称
- * ChannelDescribeUserAutoSignStatus
- * <p>
- * 接口文档
- * https://qian.tencent.com/developers/partnerApis/enterpriseUsers/ChannelDescribeUserAutoSignStatus
- */
 public class ChannelDescribeUserAutoSignStatus {
     public static void main(String[] args) {
 
@@ -37,13 +27,6 @@ public class ChannelDescribeUserAutoSignStatus {
         }
     }
 
-    /**
-     * 构造请求
-     *
-     * @param name         姓名
-     * @param idCardNumber 身份证号码
-     * @return ChannelDescribeUserAutoSignStatusRequest 请求体
-     */
     public static ChannelDescribeUserAutoSignStatusRequest prepareChannelDescribeUserAutoSignStatusRequest(
             String name, String idCardNumber) {
         ChannelDescribeUserAutoSignStatusRequest req = new ChannelDescribeUserAutoSignStatusRequest();

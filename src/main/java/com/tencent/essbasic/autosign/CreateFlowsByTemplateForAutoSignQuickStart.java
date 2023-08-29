@@ -14,24 +14,6 @@ import java.util.List;
 import static com.tencent.essbasic.common.CreateFlowUtils.setAgent;
 
 
-/**
- * 使用模板发起合同QuickStart 医疗自动签专用 B2CC
- * <p>
- * 文档地址：https://qian.tencent.com/developers/partnerApis/startFlows/CreateFlowsByTemplates
- * <p>
- * 此接口（CreateFlowsByTemplates）用于使用模板批量创建签署流程。
- * 当前可批量发起合同（签署流程）数量为1-20个。 如若在模板中配置了动态表格, 上传的附件必须为A4大小 合同发起人必须在电子签已经进行实名。
- * <p>
- * 本示例用于第三方应用集成接口对接，通过模板快速发起第一份合同
- * 建议配合文档进行操作，先修改config里的基本参数以及对应环境域名，然后跑一次
- * 第三方应用集成主要针对平台企业-代理子客发起合同，简要步骤主要是
- * 1. 通过CreateConsoleLoginUrl引导子客企业完成电子签的实名认证 - 子客企业在电子签配置印章等
- * 2. 通过简单封装的CreateFlowByTemplateDirectly接口快速发起一份合同，并得到签署链接
- * 3. 在小程序签署合同，通过API下载合同
- * 基于具体业务上的参数调用，可以参考官网的接口说明
- * https://cloud.tencent.com/document/product/1420/61534
- * 每个API的封装在api目录下可以自己配合相关参数进行调用
- */
 public class CreateFlowsByTemplateForAutoSignQuickStart {
     public static void main(String[] args) {
         try {
@@ -137,18 +119,18 @@ public class CreateFlowsByTemplateForAutoSignQuickStart {
         // 签署参与者信息
         // 个人签署方
         FlowApproverInfo approverInfo = new FlowApproverInfo();
-        // 参与人类型 PERSON_AUTO_SIGN 个人自动签，需要先开通个人自动签
+
         approverInfo.setApproverType("PERSON_AUTO_SIGN");
-        // 姓名 最大长度50个字符
+
         approverInfo.setName(name);
-        // 手机号 脱敏显示。大陆手机号为11位，暂不支持海外手机号
+
         approverInfo.setMobile(mobile);
-        // 身份证
+
         approverInfo.setIdCardType("ID_CARD");
         approverInfo.setIdCardNumber(idCardNumber);
-        // 签署审批-false-无需审批
+
         approverInfo.setApproverNeedSignReview(false);
-        // 设置模板中的参与方RecipientId
+
         approverInfo.setRecipientId(recipientId);
 
         return approverInfo;
@@ -161,18 +143,13 @@ public class CreateFlowsByTemplateForAutoSignQuickStart {
         // 企业签署方
         FlowApproverInfo flowApproverInfo = new FlowApproverInfo();
 
-        // 签署人类型
-        // PERSON-个人/自然人；
-        // ORGANIZATION-企业（企业签署方或模板发起时的企业静默签）；
         flowApproverInfo.setApproverType("ORGANIZATION");
 
-        // 企业签署方工商营业执照上的企业名称，签署方为非发起方企业场景下必传，最大长度64个字符；
+
         flowApproverInfo.setOrganizationName(Config.ServerSignOrgName);
-        // 如果签署方是子客企业，此处需要传子客企业的OrganizationOpenId
-        // 企业签署方在同一平台下的其他合作企业OpenId，签署方为非发起方企业场景下必传，最大长度64个字符；
+
         flowApproverInfo.setOrganizationOpenId(Config.ProxyOrganizationOpenId);
 
-        // 设置模板中的参与方RecipientId
         flowApproverInfo.setRecipientId(recipientId);
 
         return flowApproverInfo;

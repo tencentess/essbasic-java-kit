@@ -9,16 +9,6 @@ import com.tencentcloudapi.essbasic.v20210526.models.ChannelCreateUserAutoSignEn
 import com.tencentcloudapi.essbasic.v20210526.models.UserThreeFactor;
 
 
-/**
- * 获取个人用户自动签开启链接
- * 企业方可以通过此接口获取个人用户开启自动签的跳转链接
- * <p>
- * 接口名称
- * ChannelCreateUserAutoSignEnableUrl
- * <p>
- * 接口文档
- * https://qian.tencent.com/developers/partnerApis/enterpriseUsers/ChannelCreateUserAutoSignEnableUrl
- */
 public class ChannelCreateUserAutoSignEnableUrl {
 
     public static void main(String[] args) {

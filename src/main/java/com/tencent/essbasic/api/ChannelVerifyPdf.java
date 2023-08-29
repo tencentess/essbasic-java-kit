@@ -26,10 +26,8 @@ public class ChannelVerifyPdf {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             ChannelVerifyPdfRequest req = new ChannelVerifyPdfRequest();
 
-            // 第三方平台应用相关信息。 
-	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
             req.setAgent(agent);
-            // 合同Id，流程Id
+
             req.setFlowId(flowId);
 
             // 返回的resp是一个ChannelVerifyPdfResponse的实例，与请求对象对应
@@ -45,7 +43,7 @@ public class ChannelVerifyPdf {
      */
     public static void main(String[] args) {
         try {
-            // 设置agent参数
+
             Agent agent = CreateFlowUtils.setAgent();
 
             String flowId = "*********************";

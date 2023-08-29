@@ -7,14 +7,6 @@ import com.tencentcloudapi.essbasic.v20210526.models.ChannelCancelUserAutoSignEn
 import com.tencentcloudapi.essbasic.v20210526.models.ChannelCancelUserAutoSignEnableUrlResponse;
 import com.tencentcloudapi.essbasic.v20210526.models.UserThreeFactor;
 
-/**
- * 撤销自动签开通链接
- * 此接口（ChannelCancelUserAutoSignEnableUrl）用来撤销发送给个人用户的自动签开通链接，
- * 撤销后对应的个人用户开通链接失效。若个人用户已经完成开通，将无法撤销。（处方单场景专用，使用此接口请与客户经理确认）
- * <p>
- * 接口文档
- * https://qian.tencent.com/developers/partnerApis/enterpriseUsers/ChannelCancelUserAutoSignEnableUrl
- */
 public class ChannelCancelUserAutoSignEnableUrl {
     public static void main(String[] args) {
 
@@ -35,13 +27,6 @@ public class ChannelCancelUserAutoSignEnableUrl {
         }
     }
 
-    /**
-     * 构造请求
-     *
-     * @param name         姓名
-     * @param idCardNumber 身份证号码
-     * @return ChannelCancelUserAutoSignEnableUrlRequest 请求体
-     */
     public static ChannelCancelUserAutoSignEnableUrlRequest prepareChannelCancelUserAutoSignEnableUrl(
             String name, String idCardNumber) {
         ChannelCancelUserAutoSignEnableUrlRequest req = new ChannelCancelUserAutoSignEnableUrlRequest();

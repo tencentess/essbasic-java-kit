@@ -8,20 +8,8 @@ import com.tencentcloudapi.essbasic.v20210526.models.ChannelDescribeEmployeesReq
 import com.tencentcloudapi.essbasic.v20210526.models.ChannelDescribeEmployeesResponse;
 import com.tencentcloudapi.essbasic.v20210526.models.Filter;
 
-/**
- * 查询企业员工
- * 详细参考 https://cloud.tencent.com/document/api/1420/81119
- */
 public class ChannelDescribeEmployees {
-    /**
-     * 查询企业员工列表
-     *
-     * @param agent   第三方平台应用相关信息
-     * @param filters 查询过滤实名用户
-     * @param limit   返回最大数量，最大为20
-     * @param offset  偏移量，默认为0，最大为20000
-     * @return ChannelDescribeEmployeesResponse
-     */
+
     public static ChannelDescribeEmployeesResponse channelDescribeEmployees(Agent agent,
                                                                             Filter[] filters,
                                                                             Long limit,
@@ -32,16 +20,12 @@ public class ChannelDescribeEmployees {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             ChannelDescribeEmployeesRequest req = new ChannelDescribeEmployeesRequest();
 
-            // 第三方平台应用相关信息。 
-	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
             req.setAgent(agent);
-            // 查询过滤实名用户，Key为Status，Values为["IsVerified"]
-            // 根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]
-            // 查询离职员工时，Key为Status，Values为["QuiteJob"]
+
             req.setFilters(filters);
-            // 返回最大数量，最大为20
+
             req.setLimit(limit);
-            // 偏移量，默认为0，最大为20000
+
             req.setOffset(offset);
 
             // 返回的resp是一个ChannelDescribeEmployeesResponse的实例，与请求对象对应
@@ -57,7 +41,7 @@ public class ChannelDescribeEmployees {
      */
     public static void main(String[] args) {
         try {
-            // 设置agent参数
+
             Agent agent = CreateFlowUtils.setAgent();
 
             Filter filter = new Filter();

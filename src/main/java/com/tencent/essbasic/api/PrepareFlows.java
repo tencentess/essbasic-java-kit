@@ -5,23 +5,8 @@ import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.essbasic.v20210526.EssbasicClient;
 import com.tencentcloudapi.essbasic.v20210526.models.*;
 
-/**
- * 该接口 (PrepareFlows) 用于创建待发起文件
- * 用户通过该接口进入签署流程发起的确认页面，进行发起信息二次确认， 如果确认则进行正常发起。
- * 目前该接口只支持B2C，不建议使用，将会废弃。
- * 详细参考 https://cloud.tencent.com/document/api/1420/61519
- */
 public class PrepareFlows {
-    /**
-     * 该接口 (PrepareFlows) 用于创建待发起文件
-     * 用户通过该接口进入签署流程发起的确认页面，进行发起信息二次确认， 如果确认则进行正常发起。
-     * 目前该接口只支持B2C，不建议使用，将会废弃。
-     *
-     * @param agent     第三方平台应用相关信息
-     * @param jumpUrl   操作完成后的跳转地址，最大长度200
-     * @param flowInfos 多个合同（签署流程）信息，最大支持20个签署流程。
-     * @return PrepareFlowsResponse
-     */
+
     public static PrepareFlowsResponse prepareFlows(Agent agent, String jumpUrl, FlowInfo[] flowInfos) {
         try {
             // 实例化一个client
@@ -29,12 +14,10 @@ public class PrepareFlows {
             // 实例化一个请求对象,每个接口都会对应一个request对象
             PrepareFlowsRequest req = new PrepareFlowsRequest();
 
-            // 第三方平台应用相关信息。 
-	        // 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
             req.setAgent(agent);
-            // 操作完成后的跳转地址，最大长度200
+
             req.setJumpUrl(jumpUrl);
-            // 多个合同（签署流程）信息，最大支持20个签署流程。
+
             req.setFlowInfos(flowInfos);
 
             // 返回的resp是一个PrepareFlowsResponse的实例，与请求对象对应
@@ -50,7 +33,7 @@ public class PrepareFlows {
      */
     public static void main(String[] args) {
         try {
-            // 设置agent参数
+
             Agent agent = CreateFlowUtils.setAgent();
 
             String jumpUrl = "*********************";
@@ -73,7 +56,6 @@ public class PrepareFlows {
             flowApprover.setApproverType("");
             flowApprover.setRecipientId("");
             flowApprover.setDeadline(0L);
-            flowApprover.setCallbackUrl("");
             flowApprover.setSignComponents(null);
             flowApprover.setComponentLimitType(null);
             flowApprover.setPreReadTime(0L);
